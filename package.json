@@ -1,0 +1,20 @@
+{
+  "name": "file_sharing",
+  "version": "0.0.1",
+  "description": "Upload and share files",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kartik Patel",
+  "license": "ISC",
+  "dependencies": {
+    "backbone": "^1.2.1",
+    "body-parser": "^1.13.3",
+    "elasticsearch": "^6.0.0",
+    "express": "^4.13.3",
+    "mysql": "^2.8.0",
+    "mysql-model": "0.0.2",
+    "underscore": "^1.8.3"
+  }
+}
