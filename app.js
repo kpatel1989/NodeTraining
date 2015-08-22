@@ -13,8 +13,22 @@ app.get('/', function (req, res) {
 	 res.sendFile(__dirname+'/public/index.html');
 });
 
-app.get("/user/:id",function(req,res){
-     
+app.get("/users",function(req,res){
+    var user = new User();
+    user.find(function(err, result, fields){    
+        res.json(result);
+        res.end();
+    });
+});
+
+app.post("/login/",function(req,res){
+    console.log(req.body);
+    var user = new User();
+    user.find("count",{
+        "where":"emailId='"+req.body.emailId+"' and password='"+req.body.password+"'"
+    },function(err, result, fields){
+        res.json({"login":result>0});
+    });
 });
 
 app.post("/user",function(req,res){
