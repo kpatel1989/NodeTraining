@@ -18,13 +18,46 @@ define(function(require){
         },
         events: {
             "click #pinNote" : "pinNoteClickHandler",  
-            "click #uploadNote" : "uploadNoteClickHandler"  
+            "change .btn-file :file" : "uploadNoteClickHandler"  
         },
         pinNoteClickHandler : function(){
             this.addNoteDialog.show();
         },
-        uploadNoteClickHandler : function(){
-            
+        uploadNoteClickHandler : function(e){
+            var formdata = new FormData();
+            var files = e.target.files;
+            var file;
+            var len = files.length;
+            var i =0;
+            for ( ; i < len; i++ ) {
+                file = files[i];
+                if ( window.FileReader ) {
+                    reader = new FileReader();
+                    reader.readAsDataURL(file);
+                }
+                if (formdata) {
+                    formdata.append("file", file);
+                }       
+            }
+            if (formdata) 
+            {
+                $.ajax({
+                    url: "/uploadNotes",
+                    type: "POST",
+                    data: formdata,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    enctype:"multipart/form-data",
+                    uploadMultiple: true,
+                    success : function(res){
+                        console.log(res);
+                    },
+                    error: function(res){
+                        console.log(res);
+                    }
+                });
+            }
         },
         loadNotes: function(){
             this.pinBoard.loadNotes();

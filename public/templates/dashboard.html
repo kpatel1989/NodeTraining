@@ -61,7 +61,16 @@
                     <div class="navbar-header pull-right">
                         <ul class="nav navbar-nav navbar-right">
                             <li><button type="button" class="btn btn-primary" id="pinNote">Pin a note</button></li>
-                            <li><button type="button" class="btn btn-default" id="uploadNote">Upload</button></li>
+                            <li>
+                                <form id="uploadForm"
+                                     enctype="multipart/form-data"
+                                     action="/uploadNotes"
+                                     method="post">
+                                    <span class="btn btn-default btn-file">
+                                        Upload <input type="file" id="uploadNote" multiple>
+                                    </span>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </div>

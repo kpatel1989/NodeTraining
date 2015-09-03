@@ -2,6 +2,7 @@ require.config({
     baseUrl: 'js',
     paths: {
         jquery: 'lib/jquery',
+        "jquery-form" : 'lib/jquery.form.min',
         handlebars: 'lib/handlebars',
         underscore: 'lib/underscore',
         bootstrap : 'lib/bootstrap',
@@ -13,6 +14,6 @@ require.config({
     }
 });
 
-require(['jquery','handlebars','underscore','backbone','login'],function($,Handlebars,_,Backbone,Login){
+require(['jquery','jquery-form','handlebars','underscore','backbone','login'],function($,jQueryForm,Handlebars,_,Backbone,Login){
     Login();
 });

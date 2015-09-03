@@ -77,7 +77,7 @@ ul.board li a:hover,ul.board li a:focus{
 
 .note-pin {
     position: absolute;
-    z-index: 10000;
+    z-index: 100;
     top: -11px;
     text-align: center;
     width: 100%;

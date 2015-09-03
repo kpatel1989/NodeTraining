@@ -53,6 +53,10 @@ app.post("/notes",function(req,res){
     });
 });
 
+app.post("/uploadNotes",function(req,res){
+    console.log(JSON.stringify(req.files));
+});
+
 app.use('/img',express.static(__dirname+ '/public/img'));
 app.use('/js',express.static(__dirname+ '/public/js'));
 app.use('/fonts',express.static(__dirname+ '/public/fonts'));

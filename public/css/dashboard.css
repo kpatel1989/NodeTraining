@@ -160,6 +160,7 @@ body {
     background-color: rgba(0, 0, 0, 0.46);
     height: 100%;
     display: none;
+    z-index: 10000;
 }
 
 .pin-note-dialog-body {
