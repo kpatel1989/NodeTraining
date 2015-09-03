@@ -3,10 +3,10 @@ User = DbConn.extend({
     tableName : "user"
 });
 
-User.prototype.addUser = function(data){
+User.prototype.addUser = function(data,callback){
     
     this.set(data);
-    this.save();
+    this.save(callback);
 }
 
 module.exports = User;

@@ -3,7 +3,7 @@ var DbConnection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '',
-    database : "file_sharing"
+    database : "pin_notes"
 });
 /*
 DbConnection.prototype.connect = function(){

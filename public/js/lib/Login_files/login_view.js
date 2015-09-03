@@ -48,8 +48,8 @@ define(function(require){
                 user.signIn(function(response){
                     if(response.login){
                         //show dashboard
-                        var dashboard = new Dashboard({el:"body"});
-                        dashboard.loadNotes();
+                        var dashboard = new Dashboard();
+                        dashboard.setup();
                     }
                 });
             }

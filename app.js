@@ -3,8 +3,8 @@ var express = require("express"),
     bodyParser = require('body-parser'),
     app = express(),
     router = express.Router(),
-    User = require("./model/user");
-
+    User = require("./model/user"),
+    Notes = require("./model/notes");
 
 app.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -21,36 +21,46 @@ app.get("/users",function(req,res){
     });
 });
 
-app.post("/login/",function(req,res){
-    console.log(req.body);
+app.post("/user",function(req,res){
+    var user = new User();
+    user.addUser(req.body,function(resData){
+        res.json(resData);
+    });
+});
+
+app.post("/login",function(req,res){
     var user = new User();
     user.find("count",{
         "where":"emailId='"+req.body.emailId+"' and password='"+req.body.password+"'"
     },function(err, result, fields){
+        debugger;
         res.json({"login":result>0});
     });
 });
 
-app.post("/user",function(req,res){
-    var user = new User();
-    var resData = user.addUser(req.body);
-    res.json(resData);
+app.get("/notes",function(req,res){
+    var notes = new Notes();
+    notes.find(function(err,result,fields){
+        res.json(result);
+        res.end();
+    });
 });
 
-app.put("/user",function(req,res){
-   console.log(res); 
-    //res.send("Ok");
+app.post("/notes",function(req,res){
+    var notes = new Notes();
+    notes.addNote(req.body,function(resData){
+        res.json(resData); 
+    });
 });
 
 app.use('/img',express.static(__dirname+ '/public/img'));
-app.use('/js',express.static(__dirname+ '/public/js'));1
+app.use('/js',express.static(__dirname+ '/public/js'));
+app.use('/fonts',express.static(__dirname+ '/public/fonts'));
 app.use('/css',express.static(__dirname+ '/public/css'));
+app.use('/templates',express.static(__dirname+ '/public/templates'));
 
 
 var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Server running on http://%s:%s', host, port);
+  console.log('Server running on http://localhost:3000');
 });
 1
