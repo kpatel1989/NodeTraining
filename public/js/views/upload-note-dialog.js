@@ -1,5 +1,5 @@
 define(function(require){
-    var UploadDialogTemplate = require("text!/templates/upload-dialog.html");
+    var UploadDialogTemplate = require("text!/templates/upload-note-dialog.html");
     
     var UploadNoteDialog = Backbone.View.extend({
         initialize: function(){

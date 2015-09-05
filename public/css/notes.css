@@ -25,6 +25,7 @@ ul.board li{
   margin:1em;
   float:left;
   position: relative;
+  max-height: 250px;
 }
 
 ul.board li h2{
@@ -37,6 +38,9 @@ ul.board li p{
 /*  font-family:"Reenie Beanie",arial,sans-serif;*/
   
 font-size: 12px;
+max-height: 100px;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
 ul.board li:nth-child(even) a{

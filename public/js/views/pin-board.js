@@ -1,11 +1,9 @@
 define(function(require){
     var Notes = require("collections/notes");
     var noteTemplateText = require("text!/templates/note.html");
-   var pinboard = Backbone.View.extend({
-       
+    var pinboard = Backbone.View.extend({
        initialize: function(){
            this.noteTemplate = Handlebars.compile(noteTemplateText);
-           
            this.notes = new Notes();
            this.listenTo(this.notes,"add",this.renderNote);
        },
@@ -24,7 +22,6 @@ define(function(require){
        addNote: function(noteData){
            this.notes.add(noteData);
        }
-   });
-    
+    });
     return pinboard;
 });

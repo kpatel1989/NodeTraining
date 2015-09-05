@@ -1,5 +1,5 @@
 define(function(require){
-    var AddNoteTemplate = require("text!/templates/pin-note-dialog.html");
+    var AddNoteTemplate = require("text!/templates/add-note-dialog.html");
     var Note = require("models/note");
     
     var AddNoteDialog = Backbone.View.extend({

@@ -1,10 +1,12 @@
 var express = require("express"),
     fs = require('fs'),
     bodyParser = require('body-parser'),
+    querystring = require("querystring"),
+    formidable = require("formidable");
     app = express(),
     router = express.Router(),
     User = require("./model/user"),
-    Notes = require("./model/notes");
+    Notes = require("./model/notes"),
 
 app.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -54,7 +56,23 @@ app.post("/notes",function(req,res){
 });
 
 app.post("/uploadNotes",function(req,res){
-    res.send(req.files);
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(error, fields, files) {
+        fs.readFile(files.upl.path,function(err,data){
+            if (!err){
+                var note = new Notes();
+                note.addNote({
+                    title: files.upl.name,
+                    description : data
+                },function(resData){
+                    res.send(resData);
+                });
+            }
+            else {
+                res.send(null);
+            }
+        });
+    });
 });
 
 app.use('/img',express.static(__dirname+ '/public/img'));
