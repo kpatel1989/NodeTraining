@@ -59,17 +59,18 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header pull-right">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><button type="button" class="btn btn-primary" id="pinNote">Pin a note</button></li>
+                        <ul class="nav navbar-nav">
                             <li>
-                                <form id="uploadForm"
-                                     enctype="multipart/form-data"
-                                     action="/uploadNotes"
-                                     method="post">
-                                    <span class="btn btn-default btn-file">
-                                        Upload <input type="file" id="uploadNote" multiple>
-                                    </span>
-                                </form>
+                                <button type="button" class="btn btn-primary" id="pinNote">
+                                    <span class="glyphicon glyphicon-pushpin"></span>
+                                    Pin a note
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-primary" id="uploadNotes">
+                                    <span class="glyphicon glyphicon-upload"></span>
+                                    Upload notes
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -83,6 +84,9 @@
         </div>
     </div>
 </div>
-<div class="container pin-note-dialog" id="addNoteDialog">
+<div class="container note-dialog" id="addNoteDialog">
+
+</div>
+<div class="container note-dialog" id="uploadNoteDialog">
 
 </div>

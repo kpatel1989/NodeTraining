@@ -8,7 +8,7 @@ define(function(require){
             this.render();
         },
         render: function(){
-            this.$el.append(AddNoteTemplate);
+            this.$el.html(AddNoteTemplate);
         },
         events: {
             "click #close" : "hide",

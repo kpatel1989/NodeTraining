@@ -1,16 +1,20 @@
 define(function(require){
     var Template = require("text!/templates/dashboard.html"); 
+    var UploadDialog = require("views/upload-note-dialog");
     var AddNoteDialog = require("views/add-note-dialog");
     var PinBoard = require("views/pin-board");
     
     var dashboard = Backbone.View.extend({
         addNoteDialog : null,
+        uploadDialog : null,
         initialize: function(){
             this.render();
             
             this.addNoteDialog = new AddNoteDialog({el:"#addNoteDialog"});
             this.listenTo(this.addNoteDialog,"NOTE_ADDED",this.newNoteAdded);
             
+            this.uploadNoteDialog = new UploadDialog({el:"#uploadNoteDialog"});
+    
             this.pinBoard = new PinBoard({el:"#pinBoard"});
         },
         render: function(){
@@ -18,61 +22,42 @@ define(function(require){
         },
         events: {
             "click #pinNote" : "pinNoteClickHandler",  
-            "change .btn-file :file" : "uploadNoteClickHandler"  
+            "click #uploadNotes" : "uploadNoteClickHandler"
         },
+//            "load #uploadTarget" : "onFileUploaded"
         pinNoteClickHandler : function(){
             this.addNoteDialog.show();
         },
+        onFileUploaded: function(){
+            debugger;
+        },
         uploadNoteClickHandler : function(e){
-            var formdata = new FormData();
-            var files = e.target.files;
-            var file;
-            var len = files.length;
-            var i =0;
-            for ( ; i < len; i++ ) {
-                file = files[i];
-                if ( window.FileReader ) {
-                    reader = new FileReader();
-                    reader.readAsDataURL(file);
+            this.uploadNoteDialog.show();
+            /*var files = e.target.files;
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                var r = new FileReader();
+                var filesData = [];
+                r.onload = function(e) { 
+                    var contents = e.target.result;
+                    filesData.push(contents);
+                    $.ajax("/uploadNotes",{
+                        method : "POST",
+                        data : filesData,
+                        success : function(){
+                            console.log("success");
+                        },
+                        error: function(){
+                            console.log("error");
+                        }
+                    });
                 }
-                if (formdata) {
-                    formdata.append("file", file);
-                }       
-            }
-            if (formdata) 
-            {
-                $.ajax({
-                    url: "/uploadNotes",
-                    type: "POST",
-                    data: formdata,
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    enctype:"multipart/form-data",
-                    uploadMultiple: true,
-                    success : function(res){
-                        console.log(res);
-                    },
-                    error: function(res){
-                        console.log(res);
-                    }
-                });
-            }
+                r.readAsText(new Blob(files));
+            }*/
+//            $("#uploadForm").submit();
         },
         loadNotes: function(){
             this.pinBoard.loadNotes();
-//            $.ajax("/notes",{
-//                method : "get",
-//                success: (function(data){
-//                    this.$("#pinBoard").html();
-//                    this.addNotes(data);
-//                }).bind(this)
-//            })  
         },
-//        addNotes : function(notesData){
-//            var notes = this.noteTemplate({"notes":notesData});
-//            this.$("#pinBoard").append(notes); 
-//        },
         newNoteAdded: function(noteData){
             this.pinBoard.addNote(noteData);
         }
