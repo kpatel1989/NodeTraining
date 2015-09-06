@@ -67,16 +67,21 @@ app.get("/notes",function(req,res){
 
 app.post("/notes",function(req,res){
     var notes = new Notes();
-    notes.saveNote(req.body,function(resData){
-        res.json(resData); 
+    notes.saveNote(req.body,function(err,result){
+        console.log(result);
+        if(err)
+            res.json(err); 
+        else
+            res.json({id : result.insertId});
     });
 });
 
 app.put("/notes/:id",function(req,res){
     console.log(req.body);
     var notes = new Notes();
-    notes.saveNote(req.body,function(resData){
-        res.json(resData); 
+    notes.saveNote(req.body,function(err,result){
+        if (err)
+            res.json(err);
     });
 });
 
@@ -101,8 +106,11 @@ app.get("/groups",function(req,res){
 
 app.post("/groups",function(req,res){
     var groups = new Groups();
-    groups.saveGroup(req.body,function(resData){
-        res.json(resData); 
+    groups.saveGroup(req.body,function(err,result){
+        if(err)
+            res.json(err); 
+        else
+            res.json({id : result.insertId});
     });
 });
 

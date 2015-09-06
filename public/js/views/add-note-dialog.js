@@ -30,7 +30,7 @@ define(function(require){
             });
         },
         onSuccessfullSave: function(object, response){
-            if (!response){
+            if (response.id){
                 this.hide();
                 this.trigger("NOTE_ADDED",object.attributes);
             }

@@ -27,7 +27,7 @@ define(function(require){
             });
         },
         onSuccessfullSave: function(object, response){
-            if (!response){
+            if (response.id){
                 this.hide();
                 this.trigger("GROUP_ADDED",object.attributes);
             }
