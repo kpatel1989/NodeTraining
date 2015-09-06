@@ -1,17 +1,16 @@
 define(function(require){
-    var AddNoteTemplate = require("text!/templates/add-note-dialog.html");
-    var Notes = require("models/note");
+    var AddGroupTemplate = require("text!/templates/add-group-dialog.html");
+    var Group = require("models/group");
     
-    var AddNoteDialog = Backbone.View.extend({
+    var AddGroupDialog = Backbone.View.extend({
         model : null,
         initialize: function(){
-            this.model = new Notes();
+            this.model = new Group();
             this.listenTo(this.model,"change",this.onModelChange);
             this.render();
-            this.groupId = 'null';  
         },
         render: function(){
-            this.$el.html(AddNoteTemplate);
+            this.$el.html(AddGroupTemplate);
         },
         events: {
             "click #close" : "hide",
@@ -19,10 +18,8 @@ define(function(require){
         },
         saveNote : function(){
             this.model.set({
-                "title" : this.$("#title").val(),
-                "description" : this.$("#description").val(),
-                "userId" : window.userData.id,
-                "groupId" : this.groupId
+                "name" : this.$("#name").val(),
+                "adminId" : window.userData.id
             });
             this.model.save(null,{
                 validate : false,
@@ -32,18 +29,14 @@ define(function(require){
         onSuccessfullSave: function(object, response){
             if (!response){
                 this.hide();
-                this.trigger("NOTE_ADDED",object.attributes);
+                this.trigger("GROUP_ADDED",object.attributes);
             }
         },
         set: function(note){
             this.model.set(note);
         },
-        setGroupId: function(groupId){
-            this.groupId = groupId;  
-        },
         onModelChange : function(){
-            this.$("#title").val(this.model.get("title"));
-            this.$("#description").val(this.model.get("description"));
+            this.$("#name").val(this.model.get("name"));
         },
         show: function() {
             this.$el.fadeIn();
@@ -52,5 +45,5 @@ define(function(require){
             this.$el.fadeOut();
         }
     });
-    return AddNoteDialog;
+    return AddGroupDialog;
 })

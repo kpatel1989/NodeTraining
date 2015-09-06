@@ -118,18 +118,19 @@ body {
 }
 
 .sidebar {
-    width: 15%;
+    width: 25%;
     display: inline-block;
     vertical-align: top;
     /* border-right: 1px solid #CACACA; */
     height: 100%;
 }
-.pinboard {
-    width: 85%;
+.rightPage {
+    width: 75%;
     display: inline-block;
     vertical-align: top;
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
 .row.profile {
@@ -145,7 +146,7 @@ body {
     font-size: 79px;
 }
 
-.pinboard nav.navbar.navbar-default {
+.rightPage nav.navbar.navbar-default {
     margin: 0px;
     border-radius: 0px;
     background-color: #404040;
@@ -155,7 +156,7 @@ body {
     padding-top: 2px;
 }
 
-.pinboard .nav.navbar-nav button.btn {
+.rightPage .nav.navbar-nav button.btn {
     margin-right: 10px;
 }
 
@@ -165,7 +166,7 @@ body {
     background-color: rgba(0, 0, 0, 0.46);
     height: 100%;
     display: none;
-    z-index: 10000;
+    z-index: 1000000;
 }
 
 .pin-note-dialog-body {
@@ -187,4 +188,39 @@ div#pinNoteDialogContainer {
 
 form {
   margin:0px;
+}
+
+div#manageGroupPage {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 20000;
+    border-left: 1px solid #CACACA;
+    /* text-align: center; */
+    display: none;
+    padding: 20px;
+}
+
+#groupList li button {
+    display: none;
+}
+
+#groupList li {
+    /* height: 40px; */
+    /* line-height: 40px; */
+}
+
+#groupsList li{
+  text-align:center;
+}
+#groupsList li a {
+     width: 60%; 
+    text-align:left;
+    display: inline-block;
+}
+
+#groupList li table {
+    width: 100%;
 }

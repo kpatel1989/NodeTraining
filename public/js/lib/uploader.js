@@ -35,7 +35,7 @@ $(function(){
             tpl.find('span').click(function(){
 
                 if(tpl.hasClass('working')){
-                    jqXHR.abort();
+                        jqXHR.abort();
                 }
 
                 tpl.fadeOut(function(){

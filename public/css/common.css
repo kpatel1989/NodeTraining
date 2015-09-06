@@ -147,3 +147,9 @@ input[type=checkbox] {
 .margin-top {
     margin-top: 15px;
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

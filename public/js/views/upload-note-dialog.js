@@ -9,7 +9,11 @@ define(function(require){
             this.$el.html(UploadDialogTemplate);
         },
         events: {
-            "click #close" : "hide",
+            "click #close" : "closeDialog",
+        },
+        closeDialog: function(){
+            this.trigger("DIALOG_CLOSE");
+            this.hide();  
         },
         show: function() {
             this.$el.fadeIn();

@@ -13,63 +13,46 @@
                     <div class="profile-usertitle-name">
                         Kartik Patel
                     </div>
-<!--
-                    <div class="profile-usertitle-job">
-                        Developer
-                    </div>
--->
                 </div>
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
                 <div class="profile-userbuttons">
-<!--
-                    <button type="button" class="btn btn-success btn-sm">Follow</button>
-                    <button type="button" class="btn btn-danger btn-sm">Message</button>
--->
+                    <button type="button" class="btn btn-success btn-sm" id="manageProfile">Profile</button>
+                    <button type="button" class="btn btn-danger btn-sm" id="manageGroup">Groups</button>
                 </div>
                 <!-- END SIDEBAR BUTTONS -->
                 <!-- SIDEBAR MENU -->
 
                 <div class="profile-usermenu">
                     <ul class="nav">
-                        <li class="active">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-home"></i> Groups </a>
+                        <li class="pin-board-group" data-id="null">
+                            <a href="#" id="dashboardLink" data-id="null">
+                                <i class="glyphicon glyphicon-home" data-id="null"></i> Dashboard </a>
                         </li>
-<!--
-                        <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-user"></i> Account Settings </a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank">
-                                <i class="glyphicon glyphicon-ok"></i> Tasks </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-flag"></i> Help </a>
-                        </li>
--->
+                    </ul>
+                </div>
+                <div class="pinboardGroups">
+                    Groups
+                    <ul class="nav" id="groupList">
+
                     </ul>
                 </div>
 
                 <!-- END MENU -->
             </div>
-        </div><div class="pinboard">
+        </div><div class="rightPage">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header pull-right">
                         <ul class="nav navbar-nav">
                             <li>
                                 <button type="button" class="btn btn-primary" id="pinNote">
-                                    <span class="glyphicon glyphicon-pushpin"></span>
-                                    Pin a note
+                                    <span class="glyphicon glyphicon-pushpin"></span> Pin a note
                                 </button>
                             </li>
                             <li>
                                 <button type="button" class="btn btn-primary" id="uploadNotes">
-                                    <span class="glyphicon glyphicon-upload"></span>
-                                    Upload notes
+                                    <span class="glyphicon glyphicon-upload"></span> Upload notes
                                 </button>
                             </li>
                         </ul>
@@ -80,6 +63,12 @@
                 <ul class="board" id="pinBoard">
                     
                 </ul>
+            </div>
+            <div class="manage-group-page" id="manageGroupPage">
+                
+            </div>
+            <div class="group-board" id="groupBoard">
+                
             </div>
         </div>
     </div>

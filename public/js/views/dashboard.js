@@ -3,6 +3,9 @@ define(function(require){
     var UploadDialog = require("views/upload-note-dialog");
     var AddNoteDialog = require("views/add-note-dialog");
     var PinBoard = require("views/pin-board");
+    var ManageGroup = require("views/manage-group");
+    var GroupTemplate = require("text!/templates/group-list-item.html");
+    var Groups = require("collections/groups");
     
     var dashboard = Backbone.View.extend({
         addNoteDialog : null,
@@ -10,56 +13,75 @@ define(function(require){
         initialize: function(){
             this.render();
             
+            this.groupTemplate = Handlebars.compile(GroupTemplate);
+            
             this.addNoteDialog = new AddNoteDialog({el:"#addNoteDialog"});
             this.listenTo(this.addNoteDialog,"NOTE_ADDED",this.newNoteAdded);
             
             this.uploadNoteDialog = new UploadDialog({el:"#uploadNoteDialog"});
+            this.listenTo(this.uploadNoteDialog,"DIALOG_CLOSE",this.uploadDialogClosed);
     
             this.pinBoard = new PinBoard({el:"#pinBoard"});
+            this.listenTo(this.pinBoard,"SHOW_NOTE",this.showNote);
+            
+            this.groups = new Groups();
+            this.listenTo(this.groups,"add",this.addGroup);
+            
+            this.manageGroup = new ManageGroup({el : "#manageGroupPage",groupsCollection:this.groups});
+            this.listenTo(this.manageGroup,"GROUP_ADDED",this.updateGroupList);
         },
         render: function(){
             $("body").html(Template);
         },
         events: {
             "click #pinNote" : "pinNoteClickHandler",  
-            "click #uploadNotes" : "uploadNoteClickHandler"
+            "click #uploadNotes" : "uploadNoteClickHandler",
+            "click #manageProfile" : "manageProfileClickHandler",
+            "click #manageGroup" : "manageGroupClickHandler",
+            "click .pin-board-group" : "pinboardGroupNameClick"
         },
-//            "load #uploadTarget" : "onFileUploaded"
+        showNote: function(note){
+            this.addNoteDialog.set(note);
+            this.addNoteDialog.show();  
+        },
         pinNoteClickHandler : function(){
             this.addNoteDialog.show();
         },
-        onFileUploaded: function(){
-            debugger;
+        manageProfileClickHandler : function(){
+            
+        },
+        manageGroupClickHandler : function(){
+            this.manageGroup.show();
+        },
+        pinboardGroupNameClick: function(e){
+            var groupId = $(e.target).data("id");
+            this.pinBoard.loadGroup(groupId);
+            this.addNoteDialog.setGroupId(groupId);
         },
         uploadNoteClickHandler : function(e){
             this.uploadNoteDialog.show();
-            /*var files = e.target.files;
-            if (window.File && window.FileReader && window.FileList && window.Blob) {
-                var r = new FileReader();
-                var filesData = [];
-                r.onload = function(e) { 
-                    var contents = e.target.result;
-                    filesData.push(contents);
-                    $.ajax("/uploadNotes",{
-                        method : "POST",
-                        data : filesData,
-                        success : function(){
-                            console.log("success");
-                        },
-                        error: function(){
-                            console.log("error");
-                        }
-                    });
-                }
-                r.readAsText(new Blob(files));
-            }*/
-//            $("#uploadForm").submit();
+        },
+        uploadDialogClosed: function(){
+            this.pinBoard.loadNotes();  
         },
         loadNotes: function(){
             this.pinBoard.loadNotes();
+            this.updateGroupList();
         },
         newNoteAdded: function(noteData){
             this.pinBoard.addNote(noteData);
+        },
+        updateGroupList: function(){
+            this.groups.fetch({
+                url:this.groups.urlRoot,
+                data : {
+                    userId : window.userData.id
+                }
+            });
+        },
+        addGroup: function(groupData){
+            var group = this.groupTemplate(groupData.toJSON());
+            this.$("#groupList").append(group);
         }
     });
     return dashboard;
