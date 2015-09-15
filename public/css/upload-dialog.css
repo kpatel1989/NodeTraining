@@ -132,7 +132,7 @@ section, footer, header, aside{
 }
 
 #upload ul li input{
-    /* display: none; */
+    display: none;
 }
 
 #upload ul li p{

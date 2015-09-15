@@ -2,7 +2,7 @@ define(function(require){
    
     var note = Backbone.Model.extend({
        
-        urlRoot : "/notes",
+        urlRoot : "/note",
         
         initialize: function(){
             

@@ -106,7 +106,7 @@ body {
   height: 100%;
 }
 .board{
-  border: 10px solid rgba(128, 66, 35, 0.88);
+  border: 6px solid rgba(47, 137, 50, 0.88);
   background-color: white;
   height: 100%;
   padding: 10px;
@@ -114,18 +114,18 @@ body {
   margin: 0;
   overflow-y: auto;
   background-image: url('../img/pinboard-bg1.jpg');
-  background-size: 3px;
+  background-size: 2px;
 }
 
 .sidebar {
-    width: 25%;
+    width: 20%;
     display: inline-block;
     vertical-align: top;
     /* border-right: 1px solid #CACACA; */
     height: 100%;
 }
 .rightPage {
-    width: 75%;
+    width: 80%;
     display: inline-block;
     vertical-align: top;
     height: 100vh;
@@ -223,4 +223,10 @@ div#manageGroupPage {
 
 #groupList li table {
     width: 100%;
+}
+
+#manageGroup{
+  width: 80px;
+    padding: 0px;
+    white-space: normal;
 }

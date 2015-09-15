@@ -10,6 +10,7 @@ define(function(require){
     var dashboard = Backbone.View.extend({
         addNoteDialog : null,
         uploadDialog : null,
+        socket : null,
         initialize: function(){
             this.render();
             
@@ -67,6 +68,7 @@ define(function(require){
         loadNotes: function(){
             this.pinBoard.loadNotes();
             this.updateGroupList();
+            this.manageGroup.fetchGroupRequest();
         },
         newNoteAdded: function(noteData){
             this.pinBoard.addNote(noteData);

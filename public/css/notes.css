@@ -36,10 +36,14 @@ ul.board li h2{
   line-height: 20px;
 }
 ul.board li p{
-font-size: 12px;
-max-height: 103px;
-overflow: hidden;
-text-overflow: ellipsis;
+
+font-size: 12px;
+
+max-height: 103px;
+
+overflow: hidden;
+
+text-overflow: ellipsis;
 }
 
 ul.board li:nth-child(even) a{

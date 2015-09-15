@@ -6,6 +6,7 @@ require.config({
         "jquery.knob" : "lib/jquery.knob",
         "jquery.iframe-transport" : "lib/jquery.iframe-transport",
         "jquery.fileupload" : "lib/jquery.fileupload",
+        "socket" : "lib/socket.io",
         "handlebars": 'lib/handlebars',
         "underscore": 'lib/underscore',
         "bootstrap" : 'lib/bootstrap',
@@ -25,11 +26,11 @@ require(['jquery',
          'jquery.ui.widget',
          'jquery.knob',
          'jquery.iframe-transport',
-         'jquery.fileupload'
+         'jquery.fileupload',
         ],function($,
                     Handlebars,
                     _,
                     Backbone,
                     Login){
     Login();
-});
+}); 

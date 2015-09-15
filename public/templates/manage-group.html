@@ -1,12 +1,24 @@
 <div>
     <button type="button" class="btn btn-warning btn-sm" id="closeManageGroup">Close</button>
     <button type="button" class="btn btn-success btn-sm" id="createGroup">Create group</button>
+    <button type="button" class="btn btn-success btn-sm" id="joinGroup">Join group</button>
+    
 </div>
-<div> Your groups
+<div class="container-fluid nav navbar navbar-default"> 
+    <label>Your groups</label>
     <ul class="nav" id="groupsList">
 
     </ul>
 </div>
-<div class="container note-dialog" id="addGroupDialog">
 
+<div class="container-fluid nav navbar navbar-default"> 
+    <label>Joining requests</label>
+    <div class="table" id="groupRequestList">
+        <div class="row">
+            <span class="col-xs-5"> User </span>
+            <span class="col-xs-4"> Group </span>
+            <span class="col-xs-3"> Action </span>
+        </div>
+    </div>
 </div>
+

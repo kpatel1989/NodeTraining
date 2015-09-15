@@ -1,0 +1,8 @@
+* Drag and drop to create note;
+* On-Note editing.
+* Serverside code seperation.
+* Give more space to pin board and remove sidebar.
+* User session management user long polling
+* Live group updates.
+* Code cleanup
+* store notes in session if not logged in.

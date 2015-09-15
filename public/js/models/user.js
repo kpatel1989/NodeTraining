@@ -2,10 +2,10 @@ define(function(require){
     var user = Backbone.Model.extend({
 
         url : function(){
-            return "/user";  
+            return "/user/add";  
         },
         sigInUrl : function(){
-            return "/login";
+            return "/user/login";
         },
         initialize: function(){
 
