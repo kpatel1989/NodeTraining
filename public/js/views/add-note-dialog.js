@@ -8,9 +8,10 @@ define(function(require){
         initialize: function(){
             this.model = new Notes();
             this.listenTo(this.model,"change",this.onModelChange);
+            this.listenTo(this.model,"MODEL_SAVED",this.onSuccessfulSave);
             this.render();
             this.groupId = null; 
-            this.socket = socketio();
+            //this.socket = socketio();
         },
         render: function(){
             this.$el.html(AddNoteTemplate);
@@ -26,18 +27,14 @@ define(function(require){
                 "userId" : window.userData.id,
                 "groupId" : this.groupId
             });
-            this.model.save(null,{
-                validate : false,
-                success:this.onSuccessfullSave.bind(this)
-            });
+            this.model.saveNote();
 //            this.socket.emit("addNote",this.model.toJSON());
         },
-        onSuccessfullSave: function(object, response){
+        onSuccessfulSave: function(response){
             if (response.id){
                 this.hide();
-                this.trigger("NOTE_ADDED",object.attributes);
+                this.trigger("NOTE_ADDED",this.model.attributes);
             }
-            
         },
         set: function(note){
             this.model.set(note);

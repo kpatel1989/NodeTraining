@@ -7,6 +7,7 @@ define(function(require){
         initialize: function(){
             this.model = new Group();
             this.listenTo(this.model,"change",this.onModelChange);
+            this.listenTo(this.model,"MODEL_SAVED",this.onSuccessfulSave);
             this.render();
         },
         render: function(){
@@ -14,22 +15,19 @@ define(function(require){
         },
         events: {
             "click #close" : "hide",
-            "click #save" : "saveNote"
+            "click #save" : "saveGroup"
         },
-        saveNote : function(){
+        saveGroup : function(){
             this.model.set({
                 "name" : this.$("#name").val(),
                 "adminId" : window.userData.id
             });
-            this.model.save(null,{
-                validate : false,
-                success:this.onSuccessfullSave.bind(this)
-            });
+            this.model.saveGroup();
         },
-        onSuccessfullSave: function(object, response){
+        onSuccessfulSave: function(response){
             if (response.id){
                 this.hide();
-                this.trigger("GROUP_ADDED",object.attributes);
+                this.trigger("GROUP_ADDED",this.model.attributes);
             }
         },
         set: function(note){

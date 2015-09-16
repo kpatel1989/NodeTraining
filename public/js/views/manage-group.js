@@ -42,15 +42,14 @@ define(function(require){
         approveRequest: function(e){
             var id = $(e.target).data("id");
             var model = this.groupAssociations.get(id);
+            this.listenTo(model,"MODEL_SAVED",this.onSuccessfulSave);
             model.set("approved",true);
-            model.save(null,{
-                url : this.groupAssociations.urlRoot,
-                success: (function(object,response){
-                    var requestDiv = this.$el.find("div.row.group-request[data-id='"+id+"']");
+            model.saveJoinRequest();
+        },
+        onSuccessfulSave: function(response){
+            var requestDiv = this.$el.find("div.row.group-request[data-id='"+response.id+"']");
 //                    model.destroy();
-                    requestDiv.remove();
-                }).bind(this)
-            })
+            requestDiv.remove();
         },
         fetchGroupRequest: function(){
             this.groupAssociations.fetch({

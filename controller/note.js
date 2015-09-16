@@ -19,7 +19,7 @@ exports.all = function(req,res){
     });
 };
 
-exports.add = function(req,res){
+exports.save = function(req,res){
     var note = new Note();
     note.saveNote(req.body,function(resData){
         res.json(resData);

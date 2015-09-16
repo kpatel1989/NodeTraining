@@ -15,6 +15,17 @@ define(function(require){
                 return false;
             }
             return true;
+        },
+        saveNote: function () {
+
+            this.save(null,{
+                url : this.urlRoot + "/save",
+                validate : false,
+                success:this.onSuccessfulSave.bind(this)
+            });
+        },
+        onSuccessfulSave: function(object, response){
+            this.trigger("MODEL_SAVED",this.attributes);
         }
     });
     return note;

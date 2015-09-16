@@ -2,7 +2,7 @@ define(function(require){
    
     var group = Backbone.Model.extend({
        
-        urlRoot : "/groups",
+        urlRoot : "/group",
         
         initialize: function(){
             
@@ -12,6 +12,17 @@ define(function(require){
                 return false;
             }
             return true;
+        },
+        saveGroup: function () {
+
+            this.save(null,{
+                url : this.urlRoot + "/save",
+                validate : false,
+                success:this.onSuccessfulSave.bind(this)
+            });
+        },
+        onSuccessfulSave: function(object, response){
+            this.trigger("MODEL_SAVED",this.attributes);
         }
     });
     return group;

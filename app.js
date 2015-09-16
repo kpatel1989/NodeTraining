@@ -147,12 +147,6 @@ app.get("/groups",function(req,res){
         res.json(result);
         res.end(); 
     });
-//    groups.find("all",{
-//        "where" : "adminId="+query.userId
-//    },function(err,result,fields){
-//        res.json(result);
-//        res.end();
-//    });
 });
 
 app.post("/groups",function(req,res){

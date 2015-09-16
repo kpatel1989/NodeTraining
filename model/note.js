@@ -6,13 +6,13 @@ Notes = DbConn.extend({
 Notes.prototype.saveNote = function(data,callback){   
     this.set(data);
     this.save(function(err,result,fields){
-            callback(err ? err : result);        
+            callback(err ? err : {id:result.insertId});
     });
 }
 Notes.prototype.deleteNote = function(data,callback){   
     this.set(data);
     this.remove(function(err,result,fields){
-            callback(err ? err : result);        
+            callback(err ? err : {id:result.insertId});
     });
 }
 Notes.prototype.fetchWhere = function(where,callback){
