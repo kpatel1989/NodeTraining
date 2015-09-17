@@ -15,7 +15,6 @@ var callback = function (req, res) {
     else {
         var requirePath = "../controller/"+controller;
         var controller = require(requirePath);
-        console.log(requirePath,controller,typeof controller[action]);
         if (typeof controller[action] == 'function')
             controller[action](req,res);
         else

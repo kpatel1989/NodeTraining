@@ -12,7 +12,7 @@ exports.all = function(req,res){
         where += " and groupId is null"
     }
     else {
-        where += " and groupId =" + query.groupId
+        where = "groupId =" + query.groupId
     }
     
     var note = new Note();
@@ -25,12 +25,15 @@ exports.save = function(req,res){
     var note = new Note();
     note.saveNote(req.body,function(resData){
         res.json(resData);
+        if (note.get("groupId")) {
+            var emitter = global.EventEmitter;
+            emitter.emit("note", note.toJSON());
+        }
     });
 };
 
 exports.delete = function(req,res){
     var note = new Note();
-    console.log(req.params.id);
     note.deleteNote({id:req.params.id},function(resData){
         res.json(resData);
     });

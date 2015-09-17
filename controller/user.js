@@ -16,7 +16,6 @@ exports.add = function(req,res){
 
 exports.login = function(req,res){
     var user = new User();
-    console.log(req.body);
     user.authenticate({
         emailId : req.body.emailId,
         password : req.body.password

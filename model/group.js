@@ -26,7 +26,6 @@ Groups.prototype.fetchWhere = function(whereCondition,callback){
 };
 Groups.prototype.fetchOne = function(whereCondition,callback){
     this.find("first",whereCondition,function(err,result){
-        console.log(result);
         callback(err ? {}: result);
     });
 };

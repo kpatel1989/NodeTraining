@@ -14,7 +14,6 @@ exports.all = function(req,res){
 exports.save = function(req,res){
     var groupAssociations = new GroupAssociations();
     groupAssociations.saveJoinRequest(req.body,function(result){
-        console.log(result);
         res.json(result);
         res.end();
     });
@@ -29,7 +28,6 @@ exports.approve = function(req,res){
         id : req.body.id
     }
     groupAssociations.approveRequest(data,function(result){
-        console.log(result);
         res.json(result);
         res.end();
     });

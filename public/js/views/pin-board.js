@@ -18,7 +18,7 @@ define(function(require){
             var id = $(event.target).data("id");
             var note = this.notes.get(id);
             if (note)
-                this.trigger("SHOW_NOTE",note.attributes);
+                this.trigger("SHOW_NOTE",note.toJSON());
         },
         onDeleteClicked: function(event){
             var id = $(event.target).data("id");
@@ -52,6 +52,7 @@ define(function(require){
             noteDiv.remove();
         },
        addNote: function(noteData){
+           if (noteData.groupId.toString() === this.groupId.toString())
            this.notes.set(noteData,{remove:false});
        },
         updateNote: function(noteData){

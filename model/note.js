@@ -6,7 +6,7 @@ Notes = DbConn.extend({
 Notes.prototype.saveNote = function(data,callback){   
     this.set(data);
     this.save(function(err,result,fields){
-            callback(err ? err : {id:result.insertId});
+            callback(err ? err : {id:data.id || result.insertId});
     });
 };
 Notes.prototype.deleteNote = function(data,callback){   

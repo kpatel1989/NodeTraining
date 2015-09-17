@@ -26,7 +26,6 @@ define(function(require){
                 "groupId" : this.groupId
             });
             this.model.saveNote();
-            this.socket.emit("addNote",this.model.toJSON());
         },
         onSuccessfulSave: function(response){
             if (response.id){
@@ -35,6 +34,7 @@ define(function(require){
             }
         },
         set: function(note){
+            this.model.clear();
             this.model.set(note);
         },
         setGroupId: function(groupId){
@@ -49,6 +49,8 @@ define(function(require){
         },
         hide: function(){
             this.$el.fadeOut();
+            this.$("#title").val('');
+            this.$("#description").val('');
         }
     });
     return AddNoteDialog;

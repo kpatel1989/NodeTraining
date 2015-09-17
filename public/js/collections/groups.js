@@ -20,10 +20,14 @@ define(function(require){
             });
         },
         createRooms : function () {
-            _.each(this.models, function (group) {
+            _.each(this.models, (function (group) {
                 var groupData = group.attributes;
                 groups.sockets[groupData.name] = socketio(window.location.host+"/"+groupData.name);
-            });
+                groups.sockets[groupData.name].on("noteData",this.updateNoteData.bind(this));
+            }).bind(this));
+        },
+        updateNoteData: function (noteData) {
+            this.trigger("NEW_GROUP_NOTE",noteData);
         }
     });
     groups.sockets = [];

@@ -1,5 +1,6 @@
 var Server = require("./server/server");
 var Socket = require("./server/socket");
+var events = require("events");
     //express = require("express"),
    /* fs = require('fs'),
     bodyParser = require('body-parser'),
@@ -13,6 +14,7 @@ var Socket = require("./server/socket");
     GroupAssociations = require("./model/group-association");*/
 
 global.ROOT_PATH = __dirname;
+global.EventEmitter = new events.EventEmitter;
 Server.start();
 var socket = Socket.start(Server.app,Server.server);
 

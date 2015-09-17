@@ -22,7 +22,8 @@ define(function(require){
             
             this.groups = new Groups();
             this.listenTo(this.groups,"add",this.addGroup);
-            
+            this.listenTo(this.groups,"NEW_GROUP_NOTE",this.newNoteAdded);
+
             this.manageGroup = new ManageGroup({el : "#manageGroupPage",groupsCollection:this.groups});
             this.listenTo(this.manageGroup,"GROUP_ADDED",this.updateGroupList);
         },
@@ -40,6 +41,7 @@ define(function(require){
             this.addNoteDialog.show();  
         },
         pinNoteClickHandler : function(){
+            this.addNoteDialog.set(null);
             this.addNoteDialog.show();
         },
         manageProfileClickHandler : function(){
