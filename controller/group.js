@@ -18,3 +18,12 @@ exports.save = function(req,res){
         res.end();
     });
 };
+
+
+
+exports.delete = function(req,res){
+    var groups = new Group();
+    groups.deleteGroup(req.body,function(resData){
+        res.json(resData);
+    });
+};

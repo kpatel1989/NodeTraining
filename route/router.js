@@ -5,9 +5,10 @@ router.get("/", function (req, res) {
     res.sendFile(global.ROOT_PATH+'/public/index.html');
 });
 
-router.all("/:controller/:action/", function (req, res) {
+var callback = function (req, res) {
     var controller = req.params.controller;
     var action = req.params.action;
+
     if (!controller || !action) {
         res.send("Invalid api parameters in request url.");
     }
@@ -20,6 +21,9 @@ router.all("/:controller/:action/", function (req, res) {
         else
             res.send("Unknown action");
     }
-});
+};
+
+router.all("/:controller/:action/",callback);
+router.delete("/:controller/:action/:id",callback);
 
 module.exports = router;

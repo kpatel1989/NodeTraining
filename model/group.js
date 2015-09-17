@@ -2,6 +2,11 @@ var DbConn = require("./db_conn");
 Groups = DbConn.extend({
     tableName : "groups"
 });
+Groups.prototype.fetchAll = function(callback){
+    this.find(function(err,result){
+        callback(err ? [] : result);
+    });
+};
 Groups.prototype.fetchUserGroups = function(userId,callback){
     var query = "select g.* "
         + "from groups g left join group_association ga "

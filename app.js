@@ -1,5 +1,5 @@
-var server = require("./server/server");
-
+var Server = require("./server/server");
+var Socket = require("./server/socket");
     //express = require("express"),
    /* fs = require('fs'),
     bodyParser = require('body-parser'),
@@ -13,7 +13,8 @@ var server = require("./server/server");
     GroupAssociations = require("./model/group-association");*/
 
 global.ROOT_PATH = __dirname;
-server.start();
+Server.start();
+var socket = Socket.start(Server.app,Server.server);
 
 /*var app = express();
 app.use(bodyParser.json())

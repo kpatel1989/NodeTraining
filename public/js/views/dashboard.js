@@ -1,6 +1,5 @@
 define(function(require){
-    var Template = require("text!/templates/dashboard.html"); 
-    var UploadDialog = require("views/upload-note-dialog");
+    var Template = require("text!/templates/dashboard.html");
     var AddNoteDialog = require("views/add-note-dialog");
     var PinBoard = require("views/pin-board");
     var ManageGroup = require("views/manage-group");
@@ -10,7 +9,6 @@ define(function(require){
     var dashboard = Backbone.View.extend({
         addNoteDialog : null,
         uploadDialog : null,
-        socket : null,
         initialize: function(){
             this.render();
             
@@ -18,10 +16,7 @@ define(function(require){
             
             this.addNoteDialog = new AddNoteDialog({el:"#addNoteDialog"});
             this.listenTo(this.addNoteDialog,"NOTE_ADDED",this.newNoteAdded);
-            
-            this.uploadNoteDialog = new UploadDialog({el:"#uploadNoteDialog"});
-            this.listenTo(this.uploadNoteDialog,"DIALOG_CLOSE",this.uploadDialogClosed);
-    
+
             this.pinBoard = new PinBoard({el:"#pinBoard"});
             this.listenTo(this.pinBoard,"SHOW_NOTE",this.showNote);
             
@@ -35,8 +30,7 @@ define(function(require){
             $("body").html(Template);
         },
         events: {
-            "click #pinNote" : "pinNoteClickHandler",  
-            "click #uploadNotes" : "uploadNoteClickHandler",
+            "click #pinNote" : "pinNoteClickHandler",
             "click #manageProfile" : "manageProfileClickHandler",
             "click #manageGroup" : "manageGroupClickHandler",
             "click .pin-board-group" : "pinboardGroupNameClick"
@@ -59,12 +53,6 @@ define(function(require){
             this.pinBoard.loadGroup(groupId);
             this.addNoteDialog.setGroupId(groupId);
         },
-        uploadNoteClickHandler : function(e){
-            this.uploadNoteDialog.show();
-        },
-        uploadDialogClosed: function(){
-            this.pinBoard.loadNotes();  
-        },
         loadNotes: function(){
             this.pinBoard.loadNotes();
             this.updateGroupList();
@@ -74,12 +62,7 @@ define(function(require){
             this.pinBoard.addNote(noteData);
         },
         updateGroupList: function(){
-            this.groups.fetch({
-                url:this.groups.urlRoot,
-                data : {
-                    userId : window.userData.id
-                }
-            });
+            this.groups.fetchAll();
         },
         addGroup: function(groupData){
             var group = this.groupTemplate(groupData.toJSON());

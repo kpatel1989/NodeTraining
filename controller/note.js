@@ -1,4 +1,6 @@
 var url = require("url"),
+    fs = require('fs'),
+    formidable = require("formidable"),
     Note = require(__dirname+"/../model/note");
 
 exports.all = function(req,res){
@@ -22,6 +24,14 @@ exports.all = function(req,res){
 exports.save = function(req,res){
     var note = new Note();
     note.saveNote(req.body,function(resData){
+        res.json(resData);
+    });
+};
+
+exports.delete = function(req,res){
+    var note = new Note();
+    console.log(req.params.id);
+    note.deleteNote({id:req.params.id},function(resData){
         res.json(resData);
     });
 };

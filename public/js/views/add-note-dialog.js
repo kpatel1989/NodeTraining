@@ -1,7 +1,6 @@
 define(function(require){
     var AddNoteTemplate = require("text!/templates/add-note-dialog.html");
     var Notes = require("models/note");
-    var socketio = require("socket");
     
     var AddNoteDialog = Backbone.View.extend({
         model : null,
@@ -10,8 +9,7 @@ define(function(require){
             this.listenTo(this.model,"change",this.onModelChange);
             this.listenTo(this.model,"MODEL_SAVED",this.onSuccessfulSave);
             this.render();
-            this.groupId = null; 
-            //this.socket = socketio();
+            this.groupId = null;
         },
         render: function(){
             this.$el.html(AddNoteTemplate);
@@ -28,7 +26,7 @@ define(function(require){
                 "groupId" : this.groupId
             });
             this.model.saveNote();
-//            this.socket.emit("addNote",this.model.toJSON());
+            this.socket.emit("addNote",this.model.toJSON());
         },
         onSuccessfulSave: function(response){
             if (response.id){

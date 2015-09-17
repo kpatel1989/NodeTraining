@@ -16,7 +16,8 @@ function start() {
         console.log('Server running on http://localhost:3000');
     });
     
-    return server;
+    exports.server = server;
+    exports.app = app;
 }
 
 exports.start = start;

@@ -24,12 +24,7 @@ define(function(require){
             var id = $(event.target).data("id");
             var note = this.notes.get(id);
             if (note){
-                note.destroy({
-                    url:this.notes.urlRoot+"/"+id,
-                    success: (function(){
-                        this.deleteNote(note);
-                    }).bind(this)
-                });
+                note.deleteNote();
             }
         },
        loadNotes: function(){

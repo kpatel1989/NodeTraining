@@ -23,6 +23,15 @@ define(function(require){
         },
         onSuccessfulSave: function(object, response){
             this.trigger("MODEL_SAVED",this.attributes);
+        },
+        deleteGroup : function () {
+            this.destroy({
+                url : this.urlRoot+"/delete",
+                data : {id:this.attributes.id},
+                success: (function(){
+                    this.trigger("MODEL_DELETED",this.attributes);
+                }).bind(this)
+            });
         }
     });
     return group;

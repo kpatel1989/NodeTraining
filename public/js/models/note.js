@@ -17,11 +17,18 @@ define(function(require){
             return true;
         },
         saveNote: function () {
-
             this.save(null,{
                 url : this.urlRoot + "/save",
                 validate : false,
                 success:this.onSuccessfulSave.bind(this)
+            });
+        },
+        deleteNote : function () {
+            this.destroy({
+                url: this.urlRoot + "/delete/"+this.attributes.id,
+                success: (function () {
+                    this.trigger("MODEL_DELETED", this.attributes);
+                }).bind(this)
             });
         },
         onSuccessfulSave: function(object, response){
