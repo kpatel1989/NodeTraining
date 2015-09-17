@@ -43,8 +43,8 @@ define(function(require){
             var id = $(e.target).data("id");
             var model = this.groupAssociations.get(id);
             this.listenTo(model,"MODEL_SAVED",this.onSuccessfulSave);
-            model.set("approved",true);
-            model.saveJoinRequest();
+
+            model.approveRequest();
         },
         onSuccessfulSave: function(response){
             var requestDiv = this.$el.find("div.row.group-request[data-id='"+response.id+"']");

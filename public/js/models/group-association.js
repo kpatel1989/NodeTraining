@@ -20,6 +20,14 @@ define(function(require){
                 success:this.onSuccessfulSave.bind(this)
             });
         },
+        approveRequest:function(){
+            this.set("approved",true);
+            this.save(null,{
+                url : this.urlRoot + "/approve",
+                validate : false,
+                success:this.onSuccessfulSave.bind(this)
+            });
+        },
         onSuccessfulSave: function(object, response){
             this.trigger("MODEL_SAVED",this.attributes);
         }

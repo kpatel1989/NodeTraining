@@ -11,7 +11,7 @@ GroupAssociation.prototype.fetchAllRequests = function(userId,callback){
     var self = this;
     groups.fetchWhere({"where" : "adminId="+userId},function(result){
         var ids = _.pluck(result,"id").toString();
-        var query = "SELECT ga.id,u.id as userId,u.emailId,g.name as 'groupName' ,g.id as 'groupId'"
+        var query = "SELECT ga.id,u.id as userId,u.emailId,g.name as 'groupName' ,g.id as 'groupId' "
             + "FROM group_association ga join user u "
             + "on ga.userId = u.id "
             + "join groups g on ga.groupId = g.id "
@@ -46,8 +46,8 @@ GroupAssociation.prototype.saveJoinRequest = function(data,callback){
 
 GroupAssociation.prototype.approveRequest = function(data,callback){
     this.set(data);
-    this.save(function(err,result){
-        callback(err ? err : {id:result.insertId});
-    });
+    this.save((function(err,result){
+        callback(err ? err : {id:this.get("id") || result.insertId});
+    }).bind(this));
 }
 module.exports = GroupAssociation;
