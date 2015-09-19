@@ -76,23 +76,19 @@
 			<!-- /.search form -->
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu">
-				<li class="header">Pin Boards</li>
-				<li class="active treeview">
-					<a href="#">
-						<i class="fa fa-dashboard"></i> <span>Private Pin boards</span> <i class="fa fa-angle-left pull-right"></i>
+				<li class="header">Private Pin Boards</li>
+				<li class="pin-board-group" data-id="null">
+					<a id="dashboardLink" data-id="null">
+						<i class="fa fa-circle-o" data-id="null"></i>
+						Pin board 1
 					</a>
-					<ul class="treeview-menu">
-						<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Pin board 1</a></li>
-						<li><a href="index2.html"><i class="fa fa-circle-o"></i> Pin board 2</a></li>
-					</ul>
 				</li>
-				<li class="active treeview">
-					<a href="#">
-						<i class="fa fa-dashboard"></i> <span>Groups</span> <span class="label label-primary pull-right">8</span></i>
-					</a>
-					<ul class="treeview-menu">
-						<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Group 1 <span class="label label-primary pull-right">4</span></a></li>
-						<li><a href="index2.html"><i class="fa fa-circle-o"></i> Group 2 <span class="label label-primary pull-right">4</span></a></li>
+				<li class="header">
+					Group Pin Boards
+					<button class="btn bg-purple btn-flat add-group-btn pull-right">+</button>
+				</li>
+				<li class="treeview">
+					<ul class="sidebar-menu" id="groupList">
 					</ul>
 				</li>
 			</ul>

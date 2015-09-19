@@ -29,7 +29,11 @@ define(function(require){
         },
         render: function(){
             this.$el.html(Template);
+            this.templateFixes();
+        },
+        templateFixes: function() {
             $(".wrapper").css("height",window.innerHeight+"px");
+            $.AdminLTE.pushMenu.activate("[data-toggle='offcanvas']");
         },
         events: {
             "click #pinNote" : "pinNoteClickHandler",
