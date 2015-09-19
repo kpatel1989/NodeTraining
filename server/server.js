@@ -11,6 +11,7 @@ function start() {
     app.use('/fonts',express.static(global.ROOT_PATH+ '/public/fonts'));
     app.use('/css',express.static(global.ROOT_PATH+ '/public/css'));
     app.use('/templates',express.static(global.ROOT_PATH+ '/public/templates'));
+    app.use('/plugins',express.static(global.ROOT_PATH+ '/public/plugins'));
     app.use("/",router);
     var server = app.listen(3000, function () {
         console.log('Server running on http://localhost:3000');

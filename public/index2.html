@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href='./css/bootstrap.min.css'/>
+        <link rel="stylesheet" href="./css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/login.css">
+        <link rel="stylesheet" href="./css/dashboard.css">
+        <link rel="stylesheet" href="./css/notes.css">
+        <link rel="stylesheet" href="./css/upload-dialog.css">
+        
+        <script data-main="js/main.js" src="js/lib/require.js"></script>
+    </head>
+    <body>
+        <div class="container">
+          <div class="card card-container" id="loginContainer">
+              <div id="signInContainer">
+
+                <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                <p id="profile-name" class="profile-name-card"></p>
+                <form class="form-signin">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="loginBtn">Sign in</button>
+                </form><!-- /form -->
+                <!--<a href="#" class="forgot-password">
+                    Forgot the password?
+                </a>-->
+                <p class="tcs tsm"> Don't have an account?
+                    <a href="#" id="createAccount">Create a free account</a>
+                </p>
+              </div>
+              <div id="register" class="hide">
+                <h2>Register</h2>
+                <form class="form-signin">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="email" id="registerEmailId" class="form-control" placeholder="Email address" required autofocus>
+                    <input type="password" id="newPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="registerBtn">Create account</button>
+                </form><!-- /form -->
+                <p class="tcs tsm">
+                    Already have an account?
+                    <a href="#" id="signInLink">Sign In</a>
+                </p>
+              </div>
+          </div><!-- /card-container -->
+          <div class="card card-container hide" id="dashboardContainer">
+            
+          </div>
+      </div><!-- /container -->
+    </body>
+</html>

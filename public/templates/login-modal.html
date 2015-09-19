@@ -1,0 +1,68 @@
+<!-- BEGIN # MODAL LOGIN -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" align="center">
+				&nbsp;<span id="img_logo" class="glyphicon glyphicon-pushpin"></span>
+				<!--<img class="img-circle" id="img_logo" src="http://bootsnipp.com/img/logo.jpg">-->
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				</button>
+			</div>
+
+			<!-- Begin # DIV Form -->
+			<div id="div-forms">
+				<div id="signInContainer">
+					<!-- Begin # Login Form -->
+					<form id="login-form">
+						<div class="modal-body">
+							<div id="div-login-msg">
+								<div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+								<span id="text-login-msg">Type your username and password.</span>
+							</div>
+							<input id="inputEmail" class="form-control" type="text"
+							       placeholder="Username (type ERROR for error effect)" required>
+							<input id="inputPassword" class="form-control" type="password" placeholder="Password"
+							       required>
+						</div>
+						<div class="modal-footer">
+							<div>
+								<button id="loginBtn" type="button" class="btn btn-primary btn-lg btn-block">Login</button>
+							</div>
+							<div>
+								<button id="createAccount" type="button" class="btn btn-link">Register</button>
+							</div>
+						</div>
+					</form>
+					<!-- End # Login Form -->
+				</div>
+				<div id="register" class="hide">
+					<!-- Begin | Register Form -->
+					<form id="register-form">
+						<div class="modal-body">
+							<div id="div-register-msg">
+								<div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+								<span id="text-register-msg">Register an account.</span>
+							</div>
+							<input id="registerEmailId" class="form-control" type="text" placeholder="E-Mail" required>
+							<input id="newPassword" class="form-control" type="password" placeholder="Password" required>
+							<input id="confirmPassword" class="form-control" type="password" placeholder="Confirm Password" required>
+						</div>
+						<div class="modal-footer">
+							<div>
+								<button id="registerBtn" type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+							</div>
+							<div>
+								<button id="signInLink" type="button" class="btn btn-link">Log In</button>
+							</div>
+						</div>
+					</form>
+					<!-- End | Register Form -->
+				</div>
+			</div>
+			<!-- End # DIV Form -->
+
+		</div>
+	</div>
+</div>
+<!-- END # MODAL LOGIN -->

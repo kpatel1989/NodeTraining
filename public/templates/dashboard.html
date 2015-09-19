@@ -1,82 +1,111 @@
-<div class="container dashboard">
-    <div class="row profile">
-        <div class="sidebar">
-            <div class="profile-sidebar">
-                <!-- SIDEBAR USERPIC -->
-                <div class="profile-userpic">
-                    <!--					<img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">-->
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                </div>
-                <!-- END SIDEBAR USERPIC -->
-                <!-- SIDEBAR USER TITLE -->
-                <div class="profile-usertitle">
-                    <div class="profile-usertitle-name">
-                        Kartik Patel
-                    </div>
-                </div>
-                <!-- END SIDEBAR USER TITLE -->
-                <!-- SIDEBAR BUTTONS -->
-                <div class="profile-userbuttons">
-                    <button type="button" class="btn btn-success btn-sm" id="manageProfile">Profile</button>
-                    <button type="button" class="btn btn-danger btn-sm" id="manageGroup">Manage Groups</button>
-                </div>
-                <!-- END SIDEBAR BUTTONS -->
-                <!-- SIDEBAR MENU -->
+<div class="wrapper">
 
-                <div class="profile-usermenu">
-                    <ul class="nav">
-                        <li class="pin-board-group" data-id="null">
-                            <a href="#" id="dashboardLink" data-id="null">
-                                <i class="glyphicon glyphicon-home" data-id="null"></i> Dashboard </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="pinboardGroups">
-                    Groups
-                    <ul class="nav" id="groupList">
+	<header class="main-header">
+		<!-- Logo -->
+		<a href="index.html" class="logo">
+			<!-- mini logo for sidebar mini 50x50 pixels -->
+			<span class="logo-mini"><span class="glyphicon glyphicon-pushpin"></span></span>
+			<!-- logo for regular state and mobile devices -->
+			<span class="logo-lg"><span class="glyphicon glyphicon-pushpin"></span> Pin Notes</span>
+		</a>
+		<!-- Header Navbar: style can be found in header.less -->
+		<nav class="navbar navbar-static-top" role="navigation">
+			<!-- Sidebar toggle button-->
+			<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+				<span class="sr-only">Toggle navigation</span>
+			</a>
 
-                    </ul>
-                </div>
+			<div class="navbar-custom-menu">
+				<ul class="nav navbar-nav">
+					<!-- User Account: style can be found in dropdown.less -->
+					<li class="dropdown user user-menu">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<!--<span class="glyphicon glyphicon-user" class="user-image" aria-hidden="true"></span>-->
+							<img src="/img/user2-160x160.jpg" class="user-image" alt="User Image">
+							<span class="hidden-xs">Kartik Patel</span>
+						</a>
+						<ul class="dropdown-menu">
+							<!-- User image -->
+							<li class="user-header">
+								<!--<span class="glyphicon glyphicon-user" class="img-circle" aria-hidden="true"></span>-->
+								<img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+								<p>
+									Kartik patel - Full Stack Developer
+								</p>
+							</li>
+							<!-- Menu Footer-->
+							<li class="user-footer">
+								<div class="pull-left">
+									<a href="#" class="btn btn-default btn-flat">Profile</a>
+								</div>
+								<div class="pull-right">
+									<a href="#" class="btn btn-default btn-flat">Sign out</a>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<!-- Left side column. contains the logo and sidebar -->
+	<aside class="main-sidebar">
+		<!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar">
+			<!-- Sidebar user panel -->
+			<div class="user-panel">
+				<div class="pull-left image">
+					<!--<span class="glyphicon glyphicon-user img-circle image-thumb" aria-hidden="true"></span>-->
+					<img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+				</div>
+				<div class="pull-left info">
+					<p>Kartik Patel</p>
+					<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+				</div>
+			</div>
+			<!-- search form -->
+			<form action="#" method="get" class="sidebar-form">
+				<div class="input-group">
+					<input type="text" name="q" class="form-control" placeholder="Search...">
+	              <span class="input-group-btn">
+	                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+	                </button>
+	              </span>
+				</div>
+			</form>
+			<!-- /.search form -->
+			<!-- sidebar menu: : style can be found in sidebar.less -->
+			<ul class="sidebar-menu">
+				<li class="header">Pin Boards</li>
+				<li class="active treeview">
+					<a href="#">
+						<i class="fa fa-dashboard"></i> <span>Private Pin boards</span> <i class="fa fa-angle-left pull-right"></i>
+					</a>
+					<ul class="treeview-menu">
+						<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Pin board 1</a></li>
+						<li><a href="index2.html"><i class="fa fa-circle-o"></i> Pin board 2</a></li>
+					</ul>
+				</li>
+				<li class="active treeview">
+					<a href="#">
+						<i class="fa fa-dashboard"></i> <span>Groups</span> <span class="label label-primary pull-right">8</span></i>
+					</a>
+					<ul class="treeview-menu">
+						<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Group 1 <span class="label label-primary pull-right">4</span></a></li>
+						<li><a href="index2.html"><i class="fa fa-circle-o"></i> Group 2 <span class="label label-primary pull-right">4</span></a></li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<!-- /.sidebar -->
+	</aside>
 
-                <!-- END MENU -->
-            </div>
-        </div><div class="rightPage">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header pull-right">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <button type="button" class="btn btn-primary" id="pinNote">
-                                    <span class="glyphicon glyphicon-pushpin"></span> Pin a note
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <div class="profile-content">
-                <ul class="board" id="pinBoard">
-                    
-                </ul>
-            </div>
-            <div class="manage-group-page" id="manageGroupPage">
-                
-            </div>
-            <div class="group-board" id="groupBoard">
-                
-            </div>
-        </div>
-    </div>
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<!-- Main content -->
+		<ul class="board">
+
+		</ul><!-- /.content -->
+	</div>
 </div>
-<div class="container note-dialog" id="addNoteDialog">
-
-</div>
-<div class="container note-dialog" id="uploadNoteDialog">
-
-</div>
-<div class="container note-dialog" id="joinGroupDialog">
-    
-</div>
-<div class="container note-dialog" id="addGroupDialog">
-
-</div>
+<!-- ./wrapper -->

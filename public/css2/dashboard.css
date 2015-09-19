@@ -20,7 +20,7 @@ body {
 .profile-sidebar {
   padding: 20px 0 10px 0;
   background: #fff;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .profile-usertitle {
@@ -123,6 +123,7 @@ body {
     vertical-align: top;
     /* border-right: 1px solid #CACACA; */
     height: 100%;
+    overflow-y: auto;
 }
 .rightPage {
     width: 80%;

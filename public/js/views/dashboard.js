@@ -28,7 +28,8 @@ define(function(require){
             this.listenTo(this.manageGroup,"GROUP_ADDED",this.updateGroupList);
         },
         render: function(){
-            $("body").html(Template);
+            this.$el.html(Template);
+            $(".wrapper").css("height",window.innerHeight+"px");
         },
         events: {
             "click #pinNote" : "pinNoteClickHandler",

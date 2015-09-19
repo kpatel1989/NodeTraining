@@ -2,14 +2,13 @@ require.config({
     baseUrl: 'js',
     paths: {
         "jquery": 'lib/jquery',
-        "jquery.ui.widget" : "lib/jquery.ui.widget",
-        "jquery.knob" : "lib/jquery.knob",
-        "jquery.iframe-transport" : "lib/jquery.iframe-transport",
-        "jquery.fileupload" : "lib/jquery.fileupload",
+        "jquery.ui" : "lib/jquery-ui",
+        "bootstrap" : "lib/bootstrap",
+        "jquery.slimscroll" : "../plugins/slimScroll/jquery.slimscroll.min",
+        "template" : "template/main",
         "socket" : "lib/socket.io",
         "handlebars": 'lib/handlebars',
         "underscore": 'lib/underscore',
-        "bootstrap" : 'lib/bootstrap',
         "backbone": 'lib/backbone',
         "views" : "views",
         "models" : "models",
@@ -17,20 +16,18 @@ require.config({
         "text" : "lib/helper/text"
     }
 });
-
-require(['jquery',
-         'handlebars',
-         'underscore',
-         'backbone',
-         'login',
-         'jquery.ui.widget',
-         'jquery.knob',
-         'jquery.iframe-transport',
-         'jquery.fileupload',
-        ],function($,
-                    Handlebars,
-                    _,
-                    Backbone,
-                    Login){
-    Login();
-}); 
+require(['jquery'],function() {
+    require([
+        'jquery.ui',
+        'bootstrap',
+        'jquery.slimscroll',
+        'handlebars',
+        'underscore',
+        'backbone'
+    ], function () {
+        require(['template','views/login_view'],function(template,LoginView){
+            $.widget.bridge('uibutton', $.ui.button);
+            var view = new LoginView({el : "body"});
+        })
+    });
+});

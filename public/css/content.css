@@ -1,0 +1,10 @@
+.content-wrapper{
+    background-color: #CFD8DC;
+}
+
+.board {
+    width: 100%;
+    list-style: none;
+    margin: 0px;
+    height: 100%;
+}

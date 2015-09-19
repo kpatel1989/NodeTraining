@@ -1,11 +1,16 @@
 define(function(require){
+    var Template = require("text!/templates/login-modal.html");
     var User = require("models/user");
     var Dashboard = require("views/dashboard");
     var view = Backbone.View.extend({
         initialize: function(){
-
+            this.template = Handlebars.compile(Template);
+            this.render();
         },
-
+        render : function(){
+            this.$el.html(this.template());
+            $('#login-modal').modal('show')
+        },
         events : {
             "click #createAccount" : "onCreateAccountClick",
             "click #signInLink" : "onSignInClick",
