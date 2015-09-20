@@ -1,11 +1,11 @@
 .add-group-btn {
-    height: 45px;
-    width: 45px;
+    height: 30px;
+    width: 30px;
     text-align: center;
     padding: 0px;
     position: absolute;
-    right: 0px;
-    top: 0px;
+    right: 10px;
+    top: 6px;
 }
 
 .content-wrapper{
@@ -79,4 +79,21 @@
 
 textarea {
     resize: none;
+}
+
+.manage-group {
+    max-width: 500px!important;
+    width: 80%!important;
+}
+
+.manage-group .modal-header.nav-tabs-custom {
+    padding: 0px;
+}
+
+.manage-group .modal-content {
+    border: 0px;
+}
+
+.manage-group button.close {
+    padding: 5px;
 }

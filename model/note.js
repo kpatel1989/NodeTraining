@@ -12,7 +12,7 @@ Notes.prototype.saveNote = function(data,callback){
 Notes.prototype.deleteNote = function(data,callback){   
     this.set(data);
     this.remove(function(err,result,fields){
-            callback(err ? err : {id:result.insertId});
+            callback(err ? err : {id:data.id});
     });
 };
 Notes.prototype.fetchWhere = function(where,callback){

@@ -26,6 +26,14 @@ require(['jquery'],function() {
         'backbone'
     ], function () {
         require(['template','views/login_view'],function(template,LoginView){
+            Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
+                lvalue = parseFloat(lvalue);
+                rvalue = parseFloat(rvalue);
+
+                return {
+                    "+": lvalue + rvalue
+                }[operator];
+            });
             $.widget.bridge('uibutton', $.ui.button);
             var view = new LoginView({el : ".modal-container"});
         })

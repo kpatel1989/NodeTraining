@@ -48,13 +48,17 @@ define(function(require){
             this.$el.append(notes); 
        },
         deleteNote : function(note){
-            var noteDiv = this.$el.find("li[data-id='"+note.get("id")+"']");
+            var noteDiv = this.$el.find("li[data-id='"+note.id+"']");
             noteDiv.remove();
         },
        addNote: function(noteData){
            if (noteData.groupId + '' === this.groupId.toString())
            this.notes.set(noteData,{remove:false});
        },
+        deleteGroupNote: function (noteData) {
+            this.notes.remove(noteData.id);
+            this.deleteNote(noteData);
+        },
         updateNote: function(noteData){
             var noteDiv = this.$el.find("li[data-id='"+noteData.get("id")+"']");
             var newNoteDiv = this.noteTemplate(noteData.toJSON());

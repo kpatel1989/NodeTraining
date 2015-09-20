@@ -1,24 +1,70 @@
-<div>
-    <button type="button" class="btn btn-warning btn-sm" id="closeManageGroup">Close</button>
-    <button type="button" class="btn btn-success btn-sm" id="createGroup">Create group</button>
-    <button type="button" class="btn btn-success btn-sm" id="joinGroup">Join group</button>
-    
+<div class="modal fade" id="manage-group-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none">
+	<div class="modal-dialog manage-group">
+		<div class="modal-content">
+			<div class="modal-header nav-tabs-custom" align="center">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#tab_1" data-toggle="tab">Settings</a></li>
+					<li><a href="#tab_2" data-toggle="tab">Users</a></li>
+					<li class="pull-right">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						</button>
+					</li>
+				</ul>
+			</div>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab_1">
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Group Name</label>
+							<input id="groupName" type="text" value="{{name}}" class="form-control" placeholder="name">
+							<input type="hidden" id="groupId" value="{{id}}"/>
+						</div>
+					</div>
+					<div class="modal-footer">
+						{{#if isAdmin}}
+						<button type="button" class="btn btn-danger" id="deleteGroup">
+							<span class="ion-android-delete"></span> Delete this group
+						</button>
+						{{/if}}
+						<button type="button" class="btn btn-success pull-right" id="updateGroup">Save</button>
+					</div>
+				</div><!-- /.tab-pane -->
+				<div class="tab-pane" id="tab_2">
+					<div class="modal-body">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">Authorized Users</h3>
+							</div><!-- /.box-header -->
+							<div class="box-body no-padding">
+								<table class="table table-striped">
+									<tbody><tr>
+										<th style="width: 10px">#</th>
+										<th>User</th>
+										<th></th>
+									</tr>
+									{{#each users}}
+										<tr>
+											<td>{{math @index "+" 1}}</td>
+											<td>{{emailId}}</td>
+											<td class="text-center">
+												{{#if ../isAdmin}}
+													{{#if isAdmin}} {{else}}
+														<button type="button" class="btn btn-default delete-user" data-id="{{id}}">
+															<span class="ion-android-delete text-red" data-id="{{id}}"></span>
+														</button>
+													{{/if}}
+												{{/if}}
+											</td>
+										</tr>
+									{{/each}}
+									</tbody>
+								</table>
+							</div><!-- /.box-body -->
+						</div>
+					</div>
+				</div><!-- /.tab-pane -->
+			</div><!-- /.tab-content -->
+		</div>
+	</div>
 </div>
-<div class="container-fluid nav navbar navbar-default"> 
-    <label>Your groups</label>
-    <ul class="nav" id="groupsList">
-
-    </ul>
-</div>
-
-<div class="container-fluid nav navbar navbar-default"> 
-    <label>Joining requests</label>
-    <div class="table" id="groupRequestList">
-        <div class="row">
-            <span class="col-xs-5"> User </span>
-            <span class="col-xs-4"> Group </span>
-            <span class="col-xs-3"> Action </span>
-        </div>
-    </div>
-</div>
-

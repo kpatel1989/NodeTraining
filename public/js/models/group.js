@@ -26,8 +26,7 @@ define(function(require){
         },
         deleteGroup : function () {
             this.destroy({
-                url : this.urlRoot+"/delete",
-                data : {id:this.attributes.id},
+                url : this.urlRoot+"/delete/"+this.attributes.id,
                 success: (function(){
                     this.trigger("MODEL_DELETED",this.attributes);
                 }).bind(this)

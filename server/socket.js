@@ -9,7 +9,7 @@ exports.start = function(app,server){
 
     });*/
     var rooms = [];
-    (new Groups).fetchAll(function(groups){
+    (new Groups.init).fetchAll(function(groups){
         _.each(groups,function(group){
             rooms[group.id] = io.of("/"+group.name);
             //rooms[group.id].on("connection",function(){});
@@ -19,9 +19,14 @@ exports.start = function(app,server){
     emitter.on("save-note", function (data) {
         rooms[data.groupId].emit("noteData",data);
     });
+    emitter.on("delete-note", function (data) {
+        console.log(data);
+        rooms[data.groupId].emit("deleteNote",data);
+    });
     emitter.on("save-group", function (data) {
-        if (!rooms[data.groupId]){
-            rooms[group.id] = io.of("/"+group.name);
+        if (!rooms[data.id]){
+            console.log("room created-",data.name);
+            rooms[data.id] = io.of("/"+data.name);
         }
     });
     exports.io = io;

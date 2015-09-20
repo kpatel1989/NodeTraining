@@ -1,46 +1,46 @@
 define(function(require){
     var Template = require("text!/templates/manage-group.html");
-    var GroupTemplate = require("text!/templates/group-list-item.html");
     var GroupRequestTemplate = require("text!/templates/group-request-list-item.html");
-    var AddGroupDialog = require("views/add-group-dialog");
     var JoinGroupDialog = require("views/join-group-dialog");
-    var Groups = require("collections/groups");
     var GroupAssociations = require("collections/group-association");
     
     var manageGroup = Backbone.View.extend({
         initialize:function(options){
-            this.render();
-            this.groupTemplate = Handlebars.compile(GroupTemplate);
+            this.template = Handlebars.compile(Template);
             this.groupRequestTemplate = Handlebars.compile(GroupRequestTemplate);
-            this.groups = options.groupsCollection
-            this.listenTo(this.groups,"add",this.renderGroup);
-            
-            this.addGroupDialog = new AddGroupDialog({el:".modal-container"});
-            this.listenTo(this.addGroupDialog,"GROUP_ADDED",this.groupAdded);
-            
-            //this.joinGroupDialog = new JoinGroupDialog({el:".modal-container"});
-            
+
             this.groupAssociations = new GroupAssociations();
             this.listenTo(this.groupAssociations,"add",this.renderGroupRequest);
-            
+
+            this.groups = options.groups;
         },
         events: {
-            "click #closeManageGroup" : "hide",  
-            "click #createGroup" : "createGroup",  
+            "click #closeManageGroup" : "hide",
             "click #joinGroup" : "joinGroup",  
-            "click .approve" : "approveRequest"  
+            "click .approve" : "approveRequest",
+            "click #updateGroup" : "saveGroup",
+            "click #deleteGroup" : "deleteGroup"
         },
         render: function(){
-            //this.$el.html(Template);
+            var data = this.group.toJSON();
+            if (!data.isAdmin) {
+                data.isAdmin = this.group.get("adminId").toString() == window.userData.id.toString();
+            }
+            this.$el.html(this.template(data));
         },
-        showAddGroupDialog: function(){
-            this.addGroupDialog.show();
-        },
-        groupAdded: function(group) {
-            this.groups.add(group);
+        loadGroupData : function (groupData) {
+            this.group = groupData;
         },
         joinGroup: function(){
             this.joinGroupDialog.show();
+        },
+        saveGroup: function(){
+            this.group.set({name:this.$("#groupName").val()});
+            this.group.saveGroup();
+        },
+        deleteGroup: function(){
+            this.group.deleteGroup();
+            this.hide();
         },
         approveRequest: function(e){
             var id = $(e.target).data("id");
@@ -62,22 +62,18 @@ define(function(require){
                 }
             });
         },
-        renderGroup:function(groupModel) {
-            var group = this.groupTemplate(groupModel.attributes);
-            this.$("#groupsList").append(group);
-        },
         renderGroupRequest:function(groupRequestModel) {
             var groupRequest = this.groupRequestTemplate(groupRequestModel.attributes);
             this.$("#groupRequestList").append(groupRequest);
         },
-        createGroup: function(){
-            this.addGroupDialog.show();
+        show: function() {
+            this.render();
+            $('#manage-group-modal').modal('show');
+            this.delegateEvents();
         },
-        show: function(){
-            this.$el.fadeIn();
-        },
-        hide:function(){
-            this.$el.fadeOut();
+        hide: function(){
+            $('#manage-group-modal').modal('hide');
+            this.undelegateEvents();
         }
     });
     return manageGroup;

@@ -24,10 +24,14 @@ define(function(require){
                 var groupData = group.attributes;
                 groups.sockets[groupData.name] = socketio(window.location.host+"/"+groupData.name);
                 groups.sockets[groupData.name].on("noteData",this.updateNoteData.bind(this));
+                groups.sockets[groupData.name].on("deleteNote",this.deleteNote.bind(this));
             }).bind(this));
         },
         updateNoteData: function (noteData) {
             this.trigger("NEW_GROUP_NOTE",noteData);
+        },
+        deleteNote: function (noteData) {
+            this.trigger("GROUP_NOTE_DELETED",noteData);
         }
     });
     groups.sockets = [];

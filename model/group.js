@@ -1,4 +1,6 @@
-var DbConn = require("./db_conn");
+var DbConn = require("./db_conn"),
+    GroupAssociations = require("./group-association");
+
 Groups = DbConn.extend({
     tableName : "groups"
 });
@@ -15,7 +17,24 @@ Groups.prototype.fetchUserGroups = function(userId,callback){
         + " or userId = "+ userId
         + " group by g.id";
     this.query(query,function(err,result){
-        callback(err ? err : result);
+        if (err) callback(err);
+        var groupData = [];
+        var groupAssociations = new GroupAssociations();
+        var getUsers = function(groups,index,funCallback){
+            groupAssociations.fetchUserByGroup(groups[index].id,function(result){
+                groups[index]["users"] = result;
+                if (groups.length-1 > index) {
+                    getUsers(groups,index+1,funCallback);
+                }
+                else {
+                    funCallback(groups);
+                }
+            });
+        };
+        if (result.length>0) {
+            getUsers(result,0,callback);
+        }
+        //callback(err ? err : result);
     });
 };
 
@@ -31,15 +50,17 @@ Groups.prototype.fetchOne = function(whereCondition,callback){
 };
 Groups.prototype.saveGroup = function(data,callback){
     this.set(data);
+    var self = this;
     this.save(function(err,result) {
-        callback(err || {id : result.insertId});
+        callback(err || {id : self.id || result.insertId});
     });
 };
 Groups.prototype.deleteGroup = function(data,callback){
     this.set(data);
+    var self = this;
     this.remove(function(err,result) {
-        callback(err || {id : result.insertId});
+        callback(err || {id : self.id});
     });
 };
 
-module.exports = Groups;
+exports.init = Groups;

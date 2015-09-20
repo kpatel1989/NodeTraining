@@ -32,7 +32,7 @@ define(function(require){
         onSuccessfulSave: function(response){
             if (response.id){
                 this.hide();
-                this.trigger("GROUP_ADDED",this.model.attributes);
+                this.trigger("GROUP_ADDED",this.model);
             }
         },
         set: function(note){
