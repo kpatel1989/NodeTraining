@@ -34,10 +34,10 @@ define(function(require){
                     },
                     {
                     success : function(obj,resp){
-                        console.log(resp);
+
                     },
                     error : function(object, response){
-                        console.log(response);
+
                     }
                 });
             }
