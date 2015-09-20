@@ -52,7 +52,7 @@ define(function(require){
             noteDiv.remove();
         },
        addNote: function(noteData){
-           if (noteData.groupId.toString() === this.groupId.toString())
+           if (noteData.groupId + '' === this.groupId.toString())
            this.notes.set(noteData,{remove:false});
        },
         updateNote: function(noteData){

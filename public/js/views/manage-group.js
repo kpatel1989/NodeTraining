@@ -15,10 +15,10 @@ define(function(require){
             this.groups = options.groupsCollection
             this.listenTo(this.groups,"add",this.renderGroup);
             
-            this.addGroupDialog = new AddGroupDialog({el:"#addGroupDialog"});
+            this.addGroupDialog = new AddGroupDialog({el:".modal-container"});
             this.listenTo(this.addGroupDialog,"GROUP_ADDED",this.groupAdded);
             
-            this.joinGroupDialog = new JoinGroupDialog({el:"#joinGroupDialog"});
+            //this.joinGroupDialog = new JoinGroupDialog({el:".modal-container"});
             
             this.groupAssociations = new GroupAssociations();
             this.listenTo(this.groupAssociations,"add",this.renderGroupRequest);
@@ -31,7 +31,10 @@ define(function(require){
             "click .approve" : "approveRequest"  
         },
         render: function(){
-            this.$el.html(Template);  
+            //this.$el.html(Template);
+        },
+        showAddGroupDialog: function(){
+            this.addGroupDialog.show();
         },
         groupAdded: function(group) {
             this.groups.add(group);

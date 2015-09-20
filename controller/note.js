@@ -26,8 +26,7 @@ exports.save = function(req,res){
     note.saveNote(req.body,function(resData){
         res.json(resData);
         if (note.get("groupId")) {
-            var emitter = global.EventEmitter;
-            emitter.emit("note", note.toJSON());
+            global.EventEmitter.emit("save-note", note.toJSON());
         }
     });
 };
@@ -36,5 +35,6 @@ exports.delete = function(req,res){
     var note = new Note();
     note.deleteNote({id:req.params.id},function(resData){
         res.json(resData);
+        global.EventEmitter.emit("delete-note", note.toJSON());
     });
 };

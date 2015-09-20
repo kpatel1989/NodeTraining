@@ -6,16 +6,21 @@ define(function(require){
         model : null,
         initialize: function(){
             this.model = new Group();
+            this.listenToModel();
+            this.undelegateEvents();
+            this.render();
+        },
+        listenToModel: function () {
             this.listenTo(this.model,"change",this.onModelChange);
             this.listenTo(this.model,"MODEL_SAVED",this.onSuccessfulSave);
-            this.render();
         },
         render: function(){
             this.$el.html(AddGroupTemplate);
+
         },
         events: {
             "click #close" : "hide",
-            "click #save" : "saveGroup"
+            "click #saveGroup" : "saveGroup"
         },
         saveGroup : function(){
             this.model.set({
@@ -37,10 +42,14 @@ define(function(require){
             this.$("#name").val(this.model.get("name"));
         },
         show: function() {
-            this.$el.fadeIn();
+            this.render();
+            $('#add-group-modal').modal('show');
+            this.delegateEvents();
         },
         hide: function(){
-            this.$el.fadeOut();
+            $('#add-group-modal').modal('hide');
+            this.$("#name").val('');
+            this.undelegateEvents();
         }
     });
     return AddGroupDialog;

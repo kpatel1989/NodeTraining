@@ -12,13 +12,17 @@ exports.start = function(app,server){
     (new Groups).fetchAll(function(groups){
         _.each(groups,function(group){
             rooms[group.id] = io.of("/"+group.name);
-            rooms[group.id].on("connection",function(socket){
-            });
+            //rooms[group.id].on("connection",function(){});
         });
     });
     var emitter = global.EventEmitter;
-    emitter.on("note", function (data) {
+    emitter.on("save-note", function (data) {
         rooms[data.groupId].emit("noteData",data);
+    });
+    emitter.on("save-group", function (data) {
+        if (!rooms[data.groupId]){
+            rooms[group.id] = io.of("/"+group.name);
+        }
     });
     exports.io = io;
 };

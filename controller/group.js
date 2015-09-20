@@ -12,10 +12,19 @@ exports.all = function(req,res){
 };
 
 exports.save = function(req,res){
-    var groups = new Group();
-    groups.saveGroup(req.body,function(result){
+    var group = new Group();
+    group.saveGroup(req.body,function(result){
         res.json(result);
         res.end();
+        global.EventEmitter.emit("save-group", group.toJSON());
+    });
+};
+
+exports.delete = function(req,res){
+    var group = new Group();
+    group.deleteGroup({id:req.params.id},function(resData){
+        res.json(resData);
+        global.EventEmitter.emit("delete-group", note.toJSON());
     });
 };
 

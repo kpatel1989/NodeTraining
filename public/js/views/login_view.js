@@ -53,6 +53,7 @@ define(function(require){
                 user.signIn(function(response){
                     if(response.login){
                         //show dashboard
+                        $('body').removeClass('modal-open')
                         window.userData = response.data;
                         var dashboard = new Dashboard({el:"body"});
                         dashboard.loadNotes();

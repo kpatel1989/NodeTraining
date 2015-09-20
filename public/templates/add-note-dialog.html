@@ -1,17 +1,23 @@
-<div class="card card-container" id="pinNoteDialogContainer">
-    <div class="pin-note-dialog-body">
-        <h2><center>Pin a note</center></h2>
-        <div class="form-group">
-            <label>Title</label>
-            <input id="title" type="text" class="form-control" placeholder="title">
-        </div>
-        <div class="form-group">
-            <label>Description</label>
-            <textarea id="description" placeholder="description" class="form-control"></textarea>
-        </div>
-        <div class="text-center">
-            <button type="button" class="btn btn-success" id="save">Save</button>
-            <button type="button" class="btn btn-default" id="close">Close</button>
-        </div>
-    </div>
+<div class="modal fade" id="add-note-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" align="center">
+				Pin a note
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Title</label>
+					<input id="title" type="text" class="form-control" placeholder="title">
+				</div>
+				<div class="form-group">
+					<label>Description</label>
+					<textarea id="description" placeholder="description" class="form-control"></textarea>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" id="saveNote">Save</button>
+				<button type="button" class="btn btn-default" id="close">Close</button>
+			</div>
+		</div>
+	</div>
 </div>

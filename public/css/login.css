@@ -1,5 +1,5 @@
 
-#login-modal .modal-dialog {
+.modal-dialog {
     width: 350px;
     z-index: 10000;
     margin: auto;

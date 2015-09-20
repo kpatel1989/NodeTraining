@@ -1,13 +1,19 @@
-<div class="card card-container" id="addGroupDialogContainer">
-    <div class="add-group-dialog-body">
-        <h2><center>Add a group</center></h2>
-        <div class="form-group">
-            <label>Name</label>
-            <input id="name" type="text" class="form-control" placeholder="name">
-        </div>
-        <div class="text-center">
-            <button type="button" class="btn btn-success" id="save">Save</button>
-            <button type="button" class="btn btn-default" id="close">Close</button>
-        </div>
-    </div>
+<div class="modal fade" id="add-group-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" align="center">
+				Add a group
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Name</label>
+					<input id="name" type="text" class="form-control" placeholder="name">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" id="saveGroup">Save</button>
+				<button type="button" class="btn btn-default" id="close">Close</button>
+			</div>
+		</div>
+	</div>
 </div>

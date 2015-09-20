@@ -1,8 +1,8 @@
 <li data-id='{{id}}' class="pin-board-group treeview">
-	<a id="groupLink" data-id='{{id}}'>
+	<a href="#" id="groupLink" data-id='{{id}}'>
 		<i class="fa fa-circle-o" data-id='{{id}}'></i>
-		{{name}}
+		<span data-id="{{id}}">{{name}}</span>
 		<span class="label label-primary pull-right" data-id='{{id}}'>{{newNoteCount}}</span>
-
+		<div class="ion-edit pull-right edit-btn"></div>
 	</a>
 </li>

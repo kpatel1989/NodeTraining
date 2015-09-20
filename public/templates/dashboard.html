@@ -77,15 +77,15 @@
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu">
 				<li class="header">Private Pin Boards</li>
-				<li class="pin-board-group" data-id="null">
-					<a id="dashboardLink" data-id="null">
+				<li class="pin-board-group active" data-id="null">
+					<a href="#" id="dashboardLink" data-id="null">
 						<i class="fa fa-circle-o" data-id="null"></i>
-						Pin board 1
+						<span data-id="null">Default</span>
 					</a>
 				</li>
 				<li class="header">
-					Group Pin Boards
-					<button class="btn bg-purple btn-flat add-group-btn pull-right">+</button>
+					<span>Group Pin Boards</span>
+					<button id="addGroupBtn" class="btn bg-blue btn-flat add-group-btn pull-right">+</button>
 				</li>
 				<li class="treeview">
 					<ul class="sidebar-menu" id="groupList">
@@ -99,9 +99,15 @@
 	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">
 		<!-- Main content -->
-		<ul class="board">
+		<ul class="board" id="pinBoard">
 
 		</ul><!-- /.content -->
+		<button id="pinNote" class="btn bg-blue btn-flat add-note-btn pull-right">
+			<span class="glyphicon glyphicon-pushpin"></span> new
+		</button>
 	</div>
 </div>
 <!-- ./wrapper -->
+<div class="modal-container">
+
+</div>

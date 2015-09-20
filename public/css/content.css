@@ -1,13 +1,16 @@
 .add-group-btn {
-    height: 24px;
-    width: 25px;
+    height: 45px;
+    width: 45px;
     text-align: center;
     padding: 0px;
-    border-radius: 50%!important;
+    position: absolute;
+    right: 0px;
+    top: 0px;
 }
 
 .content-wrapper{
-    background-color: #CFD8DC;
+    background-color: #054C6B;
+    /* position: relative; */
 }
 
 .board {
@@ -15,4 +18,65 @@
     list-style: none;
     margin: 0px;
     height: 100%;
+    padding: 0px;
+}
+
+
+.sidebar-menu li.header {
+    line-height: 25px;
+    padding-right: 5px;
+    font-size: 16px;
+    position: relative;
+}
+
+.sidebar-menu>li.pin-board-group:hover .edit-btn {
+    display: inline-block;
+}
+
+.sidebar-menu>li.pin-board-group:hover .edit-btn:hover {
+    color: white;
+}
+
+.edit-btn {
+    display: none;
+    color: gray;
+    width: 25px;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    top: 36%!important;
+}
+
+.modal-container {
+    position: absolute;
+    /* top: 0px; */
+    /* left: 0px; */
+    /* height: 100%; */
+    /* width: 100%; */
+    z-index: 100000;
+}
+
+.sidebar-form input {
+    border-radius: 0px!important;
+}
+
+.sidebar-form .btn {
+    border-radius: 0px!important;
+}
+
+.sidebar-form {
+    border-radius: 0px!important;
+}
+
+.add-note-btn {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    margin: 10px;
+    height: 40px;
+}
+
+textarea {
+    resize: none;
 }

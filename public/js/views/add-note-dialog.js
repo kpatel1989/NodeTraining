@@ -1,7 +1,7 @@
 define(function(require){
     var AddNoteTemplate = require("text!/templates/add-note-dialog.html");
     var Notes = require("models/note");
-    
+
     var AddNoteDialog = Backbone.View.extend({
         model : null,
         initialize: function(){
@@ -10,13 +10,14 @@ define(function(require){
             this.listenTo(this.model,"MODEL_SAVED",this.onSuccessfulSave);
             this.render();
             this.groupId = null;
+            this.undelegateEvents();
         },
         render: function(){
             this.$el.html(AddNoteTemplate);
         },
         events: {
             "click #close" : "hide",
-            "click #save" : "saveNote"
+            "click #saveNote" : "saveNote"
         },
         saveNote : function(){
             this.model.set({
@@ -38,19 +39,22 @@ define(function(require){
             this.model.set(note);
         },
         setGroupId: function(groupId){
-            this.groupId = groupId;  
+            this.groupId = groupId;
         },
         onModelChange : function(){
             this.$("#title").val(this.model.get("title"));
             this.$("#description").val(this.model.get("description"));
         },
         show: function() {
-            this.$el.fadeIn();
+            this.render();
+            $('#add-note-modal').modal('show');
+            this.delegateEvents();
         },
         hide: function(){
-            this.$el.fadeOut();
+            $('#add-note-modal').modal('hide');
             this.$("#title").val('');
             this.$("#description").val('');
+            this.undelegateEvents();
         }
     });
     return AddNoteDialog;

@@ -27,7 +27,7 @@ require(['jquery'],function() {
     ], function () {
         require(['template','views/login_view'],function(template,LoginView){
             $.widget.bridge('uibutton', $.ui.button);
-            var view = new LoginView({el : "body"});
+            var view = new LoginView({el : ".modal-container"});
         })
     });
 });
