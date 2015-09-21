@@ -5,7 +5,6 @@ define(function(require){
     var view = Backbone.View.extend({
         initialize: function(){
             this.template = Handlebars.compile(Template);
-            this.render();
         },
         render : function(){
             this.$el.html(this.template());
@@ -34,7 +33,7 @@ define(function(require){
                     },
                     {
                     success : function(obj,resp){
-
+                        window.location.reload;
                     },
                     error : function(object, response){
 
@@ -44,6 +43,7 @@ define(function(require){
 
         },
         onLoginBtnClick: function(){
+            var self = this;
             if(this.validateLoginData()){
                 var user = new User({
                     "emailId" : $("#inputEmail").val(),
@@ -55,11 +55,17 @@ define(function(require){
                         //show dashboard
                         $('body').removeClass('modal-open')
                         window.userData = response.data;
-                        var dashboard = new Dashboard({el:"body"});
-                        dashboard.loadNotes();
+                        if (window.localStorage){
+                            window.localStorage.setItem("userData",JSON.stringify(window.userData));
+                        }
+                        self.loadDashboard();
                     }
                 });
             }
+        },
+        loadDashboard: function(){
+            var dashboard = new Dashboard({el:"body"});
+            dashboard.loadNotes();
         },
         validateLoginData: function(){
             var emailId = $("#inputEmail");

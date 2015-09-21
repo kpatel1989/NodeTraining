@@ -33,6 +33,8 @@ define(function(require){
             this.listenTo(this.groups,"GROUP_NOTE_DELETED",this.noteDeleted);
 
             this.manageGroup = new ManageGroup({el : ".modal-container",groups:this.groups});
+            var self = this;
+            $(window).bind('storage', self.onLocalStorageChange);
         },
         render: function(){
             this.$el.html(Template);
@@ -48,7 +50,19 @@ define(function(require){
             "click #manageProfile" : "manageProfileClickHandler",
             "click #manageGroup" : "manageGroupClickHandler",
             "click .pin-board-group" : "pinboardGroupNameClick",
-            "click .edit-btn" : "onEditgroupBtnClick"
+            "click .edit-btn" : "onEditgroupBtnClick",
+            "click #signOut" : "signOutClick"
+        },
+        onLocalStorageChange: function (e) {
+            if (e.originalEvent.key == "userData" && e.originalEvent.newValue == "null"){
+                window.location.reload();
+            }
+        },
+        signOutClick: function(e) {
+            if (window.localStorage){
+                window.localStorage.setItem("userData",null);
+                window.location.reload();
+            }
         },
         showNote: function(note){
             this.addNoteDialog.show();
