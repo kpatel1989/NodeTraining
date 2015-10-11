@@ -1,7 +1,9 @@
 <li data-id="{{id}}" class="note">
     <a href="#" data-id="{{id}}">
-        <div class="delete-icon" data-id="{{id}}"><i class="glyphicon glyphicon-plus" data-id="{{id}}"></i></div>
-        <h2 data-id="{{id}}" class="truncate">{{title}}</h2>
+		{{#isAdmin userId}}
+            <div class="delete-icon" data-id="{{id}}"><i class="glyphicon glyphicon-plus" data-id="{{id}}"></i></div>
+        {{/isAdmin}}
+	    <h2 data-id="{{id}}" class="truncate">{{title}}</h2>
         <p data-id="{{id}}">{{description}}</p>
     </a>
 </li>

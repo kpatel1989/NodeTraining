@@ -34,6 +34,11 @@ require(['jquery'],function() {
                     "+": lvalue + rvalue
                 }[operator];
             });
+            Handlebars.registerHelper('isAdmin', function(userId, options) {
+                if (parseInt(userId) == window.userData.id) {
+                    return options.fn(userId, options);
+                }
+            });
             $.widget.bridge('uibutton', $.ui.button);
             var view = new LoginView({el: ".modal-container"});
             if (window.localStorage && window.localStorage.getItem("userData") != 'null'){

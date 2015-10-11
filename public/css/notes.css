@@ -16,17 +16,18 @@ ul.board li a{
     -webkit-transform:rotate(-6deg);
   -o-transform:rotate(-6deg);
   -moz-transform:rotate(-6deg);
-*/
+
     -moz-transition:-moz-transform .15s linear;
   -o-transition:-o-transform .15s linear;
   -webkit-transition:-webkit-transform .15s linear;
+*/
 }
 ul.board li{
   margin:1em;
-  /* float:left; */
   position: relative;
   max-height: 250px;
   display: inline-block;
+  vertical-align: top;
 }
 
 ul.board li h2{
@@ -37,34 +38,24 @@ ul.board li h2{
   line-height: 20px;
 }
 ul.board li p{
-font-size: 12px;
-max-height: 103px;
-overflow: hidden;
-text-overflow: ellipsis;
+
+font-size: 12px;
+
+max-height: 103px;
+
+overflow: hidden;
+
+text-overflow: ellipsis;
 }
 
 ul.board li:nth-child(even) a{
-  -o-transform:rotate(4deg);
-  -webkit-transform:rotate(4deg);
-  -moz-transform:rotate(4deg);
-  position:relative;
-  top:5px;
     background:#cfc;
 }
 ul.board li:nth-child(3n) a{
-  -o-transform:rotate(-3deg);
-  -webkit-transform:rotate(-3deg);
-  -moz-transform:rotate(-3deg);
-  position:relative;
-  top:-5px;
     background:#ccf;
 }
 ul.board li:nth-child(5n) a{
-  -o-transform:rotate(5deg);
-  -webkit-transform:rotate(5deg);
-  -moz-transform:rotate(5deg);
-  position:relative;
-  top:-10px;
+
 }
 /*
 ul.board li a:hover,ul.board li a:focus{
@@ -96,9 +87,9 @@ ul.board li a:hover,ul.board li a:focus{
     right: 0px;
     top: 0px;
     text-align: center;
-    padding: 5;
+    padding: 5px;
     transform: rotate(45deg);
     color: gray;
     cursor: pointer;
-    z-index: 20000;
+    /* z-index: 20000; */
 }
