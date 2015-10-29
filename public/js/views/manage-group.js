@@ -19,7 +19,8 @@ define(function(require){
             "click #joinGroup" : "joinGroup",  
             "click .approve" : "approveRequest",
             "click #updateGroup" : "saveGroup",
-            "click #deleteGroup" : "deleteGroup"
+            "click #deleteGroup" : "deleteGroup",
+            "click #addUser" : "onAddUserClick"
         },
         render: function(){
             var data = this.group.toJSON();
@@ -41,6 +42,9 @@ define(function(require){
         deleteGroup: function(){
             this.group.deleteGroup();
             this.hide();
+        },
+        onAddUserClick: function(){
+            //TODO: add User
         },
         approveRequest: function(e){
             var id = $(e.target).data("id");
