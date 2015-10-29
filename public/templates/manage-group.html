@@ -35,6 +35,11 @@
 						<div class="box">
 							<div class="box-header">
 								<h3 class="box-title">Authorized Users</h3>
+								{{#if isAdmin}}
+								<button type="button" title="add user" class="btn btn-primary add-user pull-right">
+									<span title="add user"> + </span>
+								</button>
+								{{/if}}
 							</div><!-- /.box-header -->
 							<div class="box-body no-padding">
 								<table class="table table-striped">
