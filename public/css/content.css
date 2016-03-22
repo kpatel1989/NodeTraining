@@ -97,3 +97,13 @@ textarea {
 .manage-group button.close {
     padding: 5px;
 }
+
+li.user.user-menu > #signOut {
+    background-color: #054C6B;
+    border: 0px;
+    height: 40px;
+    line-height: 20px;
+    margin-top: 5px;
+    padding: 10px;
+    margin-right: 5px;
+}

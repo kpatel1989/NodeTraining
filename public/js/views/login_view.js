@@ -7,14 +7,18 @@ define(function(require){
             this.template = Handlebars.compile(Template);
         },
         render : function(){
-            this.$el.html(this.template());
+            this.$(".modal-container").html(this.template());
             $('#login-modal').modal('show')
         },
         events : {
             "click #createAccount" : "onCreateAccountClick",
             "click #signInLink" : "onSignInClick",
             "click #registerBtn" : "onRegisterBtnClick",
-            "click #loginBtn" : "onLoginBtnClick"
+            "click #loginBtn" : "onLoginBtnClick",
+            "click #homeLoginBtn" : "homeLoginBtnClick"
+        },
+        homeLoginBtnClick: function() {
+            this.render();
         },
         onSignInClick: function(){
             $("#signInContainer").removeClass("hide");

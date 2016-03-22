@@ -2,7 +2,7 @@ var mysql      = require('mysql-model');
 var DbConnection = mysql.createConnection({
     host     : '127.0.0.1',
     user     : 'root',
-    password : '',
+    password : 'root',
     database : "pin_notes"
 });
 

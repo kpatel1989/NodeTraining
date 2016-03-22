@@ -40,7 +40,7 @@ require(['jquery'],function() {
                 }
             });
             $.widget.bridge('uibutton', $.ui.button);
-            var view = new LoginView({el: ".modal-container"});
+            var view = new LoginView({el: "body"});
             if (window.localStorage && window.localStorage.getItem("userData") != 'null'){
                 window.userData = JSON.parse(window.localStorage.getItem("userData"));
                 view.loadDashboard();
